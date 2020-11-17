@@ -1,6 +1,7 @@
 package com.review.bean;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public abstract class Usuario implements Serializable {
 
@@ -16,8 +17,12 @@ public abstract class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	protected Integer idUsuario;
+	protected String login;
 	protected String nombre;
 	protected String contrasenha;
+	protected String email;
+	protected Date fechaRegistro;
+	protected Date fechaVencimiento;
 	protected EstadoEnum estado;
 	protected TipoUsuarioEnum tipoUsuario;
 	
@@ -26,6 +31,12 @@ public abstract class Usuario implements Serializable {
 	}
 	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	public String getNombre() {
 		return nombre;
@@ -39,6 +50,24 @@ public abstract class Usuario implements Serializable {
 	public void setContrasenha(String contrasenha) {
 		this.contrasenha = contrasenha;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+	public Date getFechaVencimiento() {
+		return fechaVencimiento;
+	}
+	public void setFechaVencimiento(Date fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
 	public EstadoEnum getEstado() {
 		return estado;
 	}
@@ -51,5 +80,7 @@ public abstract class Usuario implements Serializable {
 	public void setTipoUsuario(TipoUsuarioEnum tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+	
+	
 	
 }

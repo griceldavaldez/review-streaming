@@ -23,7 +23,9 @@ public class EspectadorPremium extends Espectador implements Serializable {
 	@Override
 	public String toString() {
 		return "EspectadorPremium [promociones=" + promociones + ", isPremium=" + isPremium + ", idUsuario=" + idUsuario
-				+ ", nombre=" + nombre + ", contrasenha=" + contrasenha + ", estado=" + estado + ", tipoUsuario="
-				+ tipoUsuario + "]";
-	}	
+				+ ", login=" + login + ", nombre=" + nombre + ", contrasenha=" + "******" + ", email=" + email
+				+ ", fechaRegistro=" + fechaRegistro + ", fechaVencimiento=" + fechaVencimiento + ", estado=" + estado
+				+ ", tipoUsuario=" + tipoUsuario + "]";
+	}
+
 }

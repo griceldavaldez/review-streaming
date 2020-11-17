@@ -15,8 +15,8 @@ public class Administrador extends Usuario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Administrador [idUsuario=" + idUsuario + ", nombre=" + nombre + ", contrasenha=" + contrasenha
-				+ ", estado=" + estado + ", tipoUsuario=" + tipoUsuario + "]";
+		return "Administrador [idUsuario=" + idUsuario + ", login=" + login + ", nombre=" + nombre + ", contrasenha="
+				+ "******" + ", email=" + email + ", fechaRegistro=" + fechaRegistro + ", fechaVencimiento="
+				+ fechaVencimiento + ", estado=" + estado + ", tipoUsuario=" + tipoUsuario + "]";
 	}
-	
 }
