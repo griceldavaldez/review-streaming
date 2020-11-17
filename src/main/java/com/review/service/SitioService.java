@@ -1,5 +1,7 @@
 package com.review.service;
 
+import java.util.List;
+
 import com.review.bean.SitioReview;
 
 public interface SitioService {
@@ -19,5 +21,21 @@ public interface SitioService {
 	 */
 	public Integer editarSitio(SitioReview sitioReview);
 	
+	/**
+	 * Método para obtener una lista de sitios de review por ciertos filtros. Si no se indican filtros, se obtienen todos los filtros.
+	 * 
+	 * @param idSitioReview Filtro para indicar que se desean obtener los sitios con este id. Puede ser null.
+	 * @param nombre Filtro para indicar que se desean obtener los sitios con nombre (o que por lo menos contengan este string dentro del nombre). Puede ser null.
+	 * @return Lista de sitios que se obtuvieron con los filtros indicados.
+	 */
+	public List<SitioReview> obtenerSitios(Integer idSitioReview, String nombre);
+	
+	/**
+	 * Método para eliminar un sitio de review. Facilitar el atributo idSitioReview para ubicar el sitio a eliminar.
+	 * 
+	 * @param idSitioReview Número identificador del sitio.
+	 * @return
+	 */
+	public Integer eliminarSitio(Integer idSitioReview);
 	
 }
