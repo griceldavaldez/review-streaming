@@ -9,7 +9,7 @@ public interface SitioService {
 	 * Método para crear un sitio de review. Facilitar los atributos del sitio a crear, excepto el idSitioReview (que se crea automáticamente).
 	 * 
 	 * @param sitioReview
-	 * @return Cantidad de sitios creados.
+	 * @return Un numero distinto de cero si la creacion de sitioReview se hizo correctamente
 	 */
 	public Integer crearSitio(SitioReview sitioReview);
 	
@@ -17,7 +17,7 @@ public interface SitioService {
 	 * Método para editar un sitio de review. Facilitar el atributo idSitioReview para ubicar el sitio a editar, y luego los nuevos valores de los atributos a actualizar.
 	 * 
 	 * @param sitioReview
-	 * @return Cantidad de sitios modificados.
+	 * @return Un numero distinto de cero si la modificacion de sitioReview se hizo correctamente
 	 */
 	public Integer editarSitio(SitioReview sitioReview);
 	
@@ -34,7 +34,7 @@ public interface SitioService {
 	 * Método para eliminar un sitio de review. Facilitar el atributo idSitioReview para ubicar el sitio a eliminar.
 	 * 
 	 * @param idSitioReview Número identificador del sitio.
-	 * @return
+	 * @return Un numero distinto de cero si la eliminacion de sitioReview se hizo correctamente
 	 */
 	public Integer eliminarSitio(Integer idSitioReview);
 	

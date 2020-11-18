@@ -9,7 +9,7 @@ public interface PromocionService {
 	 * Método para crear una promoción. Facilitar los atributos de la promoción a crear, excepto el idPromocion (que se crea automáticamente).
 	 * 
 	 * @param Promocion La promocion, indicando los atributos con los cuales crear.
-	 * @return Cantidad de promociones creadas.
+	 * @return Un numero distinto de cero si la creacion de Promocion se hizo correctamente
 	 */
 	public Integer crearPromocion(Promocion Promocion);
 	
@@ -17,7 +17,7 @@ public interface PromocionService {
 	 * Método para editar una promoción. Facilitar el atributo idPromocion para ubicar la promoción a editar, y luego los nuevos valores de los atributos a actualizar.
 	 * 
 	 * @param Promocion La promocion, indicando los atributos a modificar.
-	 * @return Cantidad de promociones modificadas.
+	 * @return Un numero distinto de cero si la modificacion de Promocion se hizo correctamente
 	 */
 	public Integer editarPromocion(Promocion Promocion);
 	
@@ -34,7 +34,7 @@ public interface PromocionService {
 	 * Método para eliminar una promoción. Facilitar el atributo idPromocion para ubicar la promoción a eliminar.
 	 * 
 	 * @param idPromocion Número identificador de la promoción.
-	 * @return Cantidad de promociones eliminadas.
+	 * @return Un numero distinto de cero si la eliminacion de Promocion se hizo correctamente
 	 */
 	public Integer eliminarPromocion(Integer idPromocion);
 }

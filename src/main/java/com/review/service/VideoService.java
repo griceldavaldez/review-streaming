@@ -9,7 +9,7 @@ public interface VideoService {
 	 * Método para crear un video. Recibirá instancia de Serie o de Pelicula. Facilitar los atributos del video a crear, excepto el idVideo (que se crea automáticamente).
 	 * 
 	 * @param video
-	 * @return Cantidad de videos creados.
+	 * @return Un numero distinto de cero si la creacion de Video se hizo correctamente
 	 */
 	public Integer crearVideo(Video video);
 	
@@ -17,7 +17,7 @@ public interface VideoService {
 	 * Método para editar un video. Facilitar el atributo idVideo para ubicar el video a editar, y luego los nuevos valores de los atributos a actualizar.
 	 * 
 	 * @param video El video indicando los atributos a modificar.
-	 * @return Cantidad de videos modificados.
+	 * @return Un numero distinto de cero si la modificacion de Video se hizo correctamente
 	 */
 	public Integer editarVideo(Video video);
 	
@@ -36,7 +36,7 @@ public interface VideoService {
 	 * Método para eliminar un video. Facilitar el atributo idVideo para ubicar el video a eliminar.
 	 * 
 	 * @param idVideo Número identificador del video.
-	 * @return Cantidad de videos eliminados.
+	 * @return Un numero distinto de cero si la eliminacion de Video se hizo correctamente
 	 */
 	public Integer eliminarVideo(Integer idVideo);
 }
