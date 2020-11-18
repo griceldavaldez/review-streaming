@@ -17,7 +17,6 @@ public abstract class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	protected Integer idUsuario;
-	protected String login;
 	protected String nombre;
 	protected String contrasenha;
 	protected String email;
@@ -31,12 +30,6 @@ public abstract class Usuario implements Serializable {
 	}
 	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
-	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
 	}
 	public String getNombre() {
 		return nombre;

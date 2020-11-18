@@ -27,7 +27,7 @@ public class CuradorDeContenido extends Usuario implements Serializable {
 	@Override
 	public String toString() {
 		return "CuradorDeContenido [catergoriasAModerar=" + catergoriasAModerar + ", idUsuario=" + idUsuario
-				+ ", login=" + login + ", nombre=" + nombre + ", contrasenha=" + "******" + ", email=" + email
+				+ ", nombre=" + nombre + ", contrasenha=" + "******" + ", email=" + email
 				+ ", fechaRegistro=" + fechaRegistro + ", fechaVencimiento=" + fechaVencimiento + ", estado=" + estado
 				+ ", tipoUsuario=" + tipoUsuario + "]";
 	}

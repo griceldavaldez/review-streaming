@@ -38,12 +38,14 @@ public class Pelicula extends Video implements Serializable {
 	public void setSaga(String saga) {
 		this.saga = saga;
 	}
+	
 	@Override
 	public String toString() {
 		return "Pelicula [anhoEstreno=" + anhoEstreno + ", director=" + director + ", duracionMinutos="
 				+ duracionMinutos + ", saga=" + saga + ", idVideo=" + idVideo + ", titulo=" + titulo + ", descripcion="
 				+ descripcion + ", puntajes=" + puntajes + ", categoria=" + categoria + "]";
 	}
+	
 	
 
 }

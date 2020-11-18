@@ -19,11 +19,14 @@ public class Serie extends Video implements Serializable {
 	public void setTemporadas(List<Temporada> temporadas) {
 		this.temporadas = temporadas;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Serie [temporadas=" + temporadas + "]";
+		return "Serie [temporadas=" + temporadas + ", idVideo=" + idVideo + ", titulo=" + titulo + ", descripcion="
+				+ descripcion + ", puntajes=" + puntajes + ", categoria=" + categoria + "]";
 	}
+	
+
 	
 	
 }
