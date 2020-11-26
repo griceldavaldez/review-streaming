@@ -3,7 +3,9 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Usuario implements Serializable {
+import com.review.utils.Notificable;
+
+public abstract class Usuario implements Serializable,Notificable {
 
 	public enum TipoUsuarioEnum {
 		ADMINISTRADOR,CURADOR,ESPECTADOR
