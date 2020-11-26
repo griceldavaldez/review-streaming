@@ -1,19 +1,21 @@
 package com.review.utils;
 
+import com.review.bean.Pelicula;
+
 public class ValidarUtils {
 	
 	/**
 	 * Utilidad que verifica si los atributos de la clase video están inicializados
 	 * 
-	 * @param val 
+	 * @param val Instancia de Video o Serie
 	 */
 	public static void validarVideo(Validable val) {
+		
+		/*if(val.getIdVideo()==0) {
+		System.out.println("No hay id de la Pelicula");
+		}*/
+		
 		//se verifica si alguno de los campos está incompleto para avisar que faltan datos
-		
-		if(val.getIdVideo()==0) {
-			System.out.println("No hay id de video");
-		}
-		
 		if(val.getTitulo().isBlank()) {
 			System.out.println("No hay titulo");
 		}
@@ -31,5 +33,14 @@ public class ValidarUtils {
 		}
 	}
 	
+	//PARA PROBAR EL CODIGO
+	public static void main(String[] args) {
+		Pelicula peli = new Pelicula();
+		//peli.setAnhoEstreno(2020);
+		peli.setTitulo("It");
+		ValidarUtils.validarVideo(peli);
+	}
 	
+	
+		
 }

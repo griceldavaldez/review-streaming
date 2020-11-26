@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.review.utils.Ordenable;
+import com.review.utils.Validable;
 
-public abstract class Video implements Serializable, Ordenable {
+public abstract class Video implements Serializable, Ordenable, Validable {
 
 	/**
 	 * 

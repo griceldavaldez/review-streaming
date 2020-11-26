@@ -2,6 +2,8 @@ package com.review.bean;
 
 import java.io.Serializable;
 
+//import com.review.utils.Validable;
+
 public class Pelicula extends Video implements Serializable {
 
 	/**

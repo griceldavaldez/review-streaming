@@ -3,9 +3,8 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import com.review.utils.Notificable;
 
-public class EspectadorPremium extends Espectador implements Serializable, Notificable {
+public class EspectadorPremium extends Espectador implements Serializable {
 
 	/**
 	 * 

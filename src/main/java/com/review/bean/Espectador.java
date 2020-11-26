@@ -2,9 +2,8 @@ package com.review.bean;
 
 import java.io.Serializable;
 
-import com.review.utils.Notificable;
 
-public class Espectador extends Usuario implements Serializable, Notificable {
+public class Espectador extends Usuario implements Serializable {
 
 	/**
 	 * 

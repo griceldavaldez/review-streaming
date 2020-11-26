@@ -3,7 +3,9 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
-public class Serie extends Video implements Serializable {
+import com.review.utils.Validable;
+
+public class Serie extends Video implements Serializable, Validable {
 
 	/**
 	 * 

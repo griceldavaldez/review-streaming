@@ -30,12 +30,12 @@ public final class SortUtils {
 	
 	
 	/**
-	 * Utilidad que imprime una lista ordenada, debe ser del tipo ordenable
+	 * Utilidad que imprime una lista del tipo ordenable.
 	 * 
 	 * @param list La lista a imprimir 
 	 */
-	public static void imprimirListaOrdenada(List<? extends Ordenable> list) {
-		System.out.println("\nLista ordenada\n");
+	public static void imprimirLista(List<? extends Ordenable> list, String mensaje) {
+		System.out.println(mensaje);
 		for(Ordenable a : list) {
 			System.out.println(a.getNombre());
 		}
@@ -46,17 +46,17 @@ public final class SortUtils {
 		
 		//para ordenar usuarios 
 		List<Usuario> list = new ArrayList<Usuario>();
-		Usuario u = new Administrador();
+		Administrador u = new Administrador();
 		u.setNombre("Carlos");
-		Usuario u2 = new Administrador();
+		Administrador u2 = new Administrador();
 		u2.setNombre("José");
-		Usuario u3 = new Administrador();
+		Administrador u3 = new Administrador();
 		u3.setNombre("Ana");
 		list.add(u);
 		list.add(u2);
 		list.add(u3);
-		SortUtils.sortPorNombre(SortMode.DESC,list);
-		SortUtils.imprimirListaOrdenada(list);
+		SortUtils.sortPorNombre(SortMode.ASC,list);
+		SortUtils.imprimirLista(list, "\nLista ordenada en forma ascendente (A-Z) \n");
 		
 		//para ordenar sitios de review
 		List<SitioReview> list2 = new ArrayList<SitioReview>();
@@ -69,23 +69,23 @@ public final class SortUtils {
 		list2.add(sitio1);
 		list2.add(sitio2);
 		list2.add(sitio3);
-		SortUtils.sortPorNombre(SortMode.ASC,list2);
-		SortUtils.imprimirListaOrdenada(list2);
+		SortUtils.sortPorNombre(SortMode.DESC,list2);
+		SortUtils.imprimirLista(list2, "\nLista ordenada en forma descendente (Z-A) \n");
 		
 		//para ordenar videos
 		
 		List<Video> list3 = new ArrayList<Video>();
 		Pelicula peli1= new Pelicula();
-		peli1.setTitulo("Titanic");
+		peli1.setTitulo("Star Wars");
 		Pelicula peli2= new Pelicula();
-		peli2.setTitulo("El Señor de los Anilllos");
+		peli2.setTitulo("Harry Potter");
 		Pelicula peli3= new Pelicula();
 		peli3.setTitulo("It");
 		list3.add(peli1);
 		list3.add(peli2);
 		list3.add(peli3);
 		SortUtils.sortPorNombre(SortMode.ASC,list3);
-		SortUtils.imprimirListaOrdenada(list3);
+		SortUtils.imprimirLista(list3, "\nLista ordenada en forma ascendente (A-Z) \n");
 		
 	} 
 }

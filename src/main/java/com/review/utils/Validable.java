@@ -12,9 +12,9 @@ import com.review.bean.Puntaje;
  */
 
 public interface Validable {
-	Integer getIdVideo();
-	String getTitulo();
-	String getDescripcion();
-	List<Puntaje> getPuntajes();
-	Categoria getCategoria();	
+	public Integer getIdVideo();
+	public String getTitulo();
+	public String getDescripcion();
+	public List<Puntaje> getPuntajes();
+	public Categoria getCategoria();	
 }
