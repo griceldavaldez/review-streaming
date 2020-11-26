@@ -3,7 +3,9 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
-public abstract class Video implements Serializable {
+import com.review.utils.Ordenable;
+
+public abstract class Video implements Serializable, Ordenable {
 
 	/**
 	 * 
@@ -45,5 +47,9 @@ public abstract class Video implements Serializable {
 	}
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+	
+	public String getNombre() {
+		return titulo;
 	}
 }

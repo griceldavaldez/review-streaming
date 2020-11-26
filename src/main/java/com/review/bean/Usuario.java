@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.review.utils.Notificable;
+import com.review.utils.Ordenable;
 
-public abstract class Usuario implements Serializable,Notificable {
+public abstract class Usuario implements Serializable, Notificable, Ordenable{
 
 	public enum TipoUsuarioEnum {
 		ADMINISTRADOR,CURADOR,ESPECTADOR
