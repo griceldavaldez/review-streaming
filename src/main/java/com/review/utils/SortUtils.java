@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import com.review.bean.Administrador;
-import com.review.bean.Pelicula;
-import com.review.bean.SitioReview;
-import com.review.bean.Usuario;
-
-//import com.review.bean.*;
+import com.review.bean.*;
 
 public final class SortUtils {
 	
 	public enum SortMode {ASC, DESC}
-
-	public static void sortPorNombre(final SortMode sortMode, List<Ordenable> list) {
+	
+	/**
+	 * Utilidad que ordena una lista de Ordenables (Usuario, SitioReview, Video) en forma ascendente o descendente
+	 * 
+	 * @param sortMode Indica si el ordenamiento se hace en forma forma ascendente o descendente. Puede tener dos valores {ASC o DESC}
+	 * @param list La lista que se desea ordenar
+	 */
+	public static void sortPorNombre(final SortMode sortMode, List<? extends Ordenable> list) {
 		
 		Collections.sort(list, new Comparator<Ordenable>(){
 		    public int compare(Ordenable o1, Ordenable o2) {
@@ -28,7 +28,13 @@ public final class SortUtils {
 		});
 	}
 	
-	public static void imprimirListaOrdenada(List<Ordenable> list) {
+	
+	/**
+	 * Utilidad que imprime una lista ordenada, debe ser del tipo ordenable
+	 * 
+	 * @param list La lista a imprimir 
+	 */
+	public static void imprimirListaOrdenada(List<? extends Ordenable> list) {
 		System.out.println("\nLista ordenada\n");
 		for(Ordenable a : list) {
 			System.out.println(a.getNombre());
@@ -39,7 +45,7 @@ public final class SortUtils {
 	public static void main(String[] args) {
 		
 		//para ordenar usuarios 
-		List<Ordenable> list = new ArrayList<Ordenable>();
+		List<Usuario> list = new ArrayList<Usuario>();
 		Usuario u = new Administrador();
 		u.setNombre("Carlos");
 		Usuario u2 = new Administrador();
@@ -53,7 +59,7 @@ public final class SortUtils {
 		SortUtils.imprimirListaOrdenada(list);
 		
 		//para ordenar sitios de review
-		List<Ordenable> list2 = new ArrayList<Ordenable>();
+		List<SitioReview> list2 = new ArrayList<SitioReview>();
 		SitioReview sitio1 = new SitioReview();
 		sitio1.setNombre("IMDB");
 		SitioReview sitio2 = new SitioReview();
@@ -68,7 +74,7 @@ public final class SortUtils {
 		
 		//para ordenar videos
 		
-		List<Ordenable> list3 = new ArrayList<Ordenable>();
+		List<Video> list3 = new ArrayList<Video>();
 		Pelicula peli1= new Pelicula();
 		peli1.setTitulo("Titanic");
 		Pelicula peli2= new Pelicula();
