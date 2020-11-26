@@ -1,4 +1,4 @@
-package com.review.bean;
+package com.review.utils;
 
 import java.util.Date;
 

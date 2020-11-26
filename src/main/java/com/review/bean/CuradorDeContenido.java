@@ -3,6 +3,8 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import com.review.utils.Notificable;
+
 public class CuradorDeContenido extends Usuario implements Serializable, Notificable {
 
 	/**

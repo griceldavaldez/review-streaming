@@ -1,6 +1,9 @@
-package com.review.bean;
+package com.review.utils;
 
 import java.util.List;
+
+import com.review.bean.Categoria;
+import com.review.bean.Puntaje;
 
 /*
  * La interfaz se utiliza para validar que los campos estén completos, para
