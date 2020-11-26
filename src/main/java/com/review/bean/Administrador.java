@@ -21,6 +21,5 @@ public class Administrador extends Usuario implements Serializable, Notificable 
 				+ ", email=" + email + ", fechaRegistro=" + fechaRegistro + ", fechaVencimiento=" + fechaVencimiento
 				+ ", estado=" + estado + ", tipoUsuario=" + tipoUsuario + "]";
 	}
-
 	
 }

@@ -1,14 +1,6 @@
 package com.review.utils;
-
-import java.util.Date;
-
-/*
- * Es la interfaz que se utiliza para poder aplicar las utilidades de notificaciones
- * Se implementa en usuarios y sus hijos
- */
-
 public interface Notificable {
-	String getEmail();
-	String getNombre();
-	Date getFechaVencimiento();
+	public String getNombre();
+	public String getEmail();
+  
 }

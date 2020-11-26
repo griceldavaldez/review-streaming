@@ -21,7 +21,7 @@ public interface UsuarioService {
 	 * Método para editar un usuario. Facilitar el atributo idUsuario para ubicar el usuario a editar, y luego los nuevos valores de los atributos a actualizar.
 	 *
 	 * @param usuario El usuario, indicando los atributos con los cuales modificar.
-	 * @return Un numero distinto de cero si la modificacion de Video se hizo correctamente
+	 * @return Un numero distinto de cero si la modificacion de Usuario se hizo correctamente
 	 */
 	
 	public Integer editarUsuario(Usuario usuario);

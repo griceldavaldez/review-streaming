@@ -2,7 +2,9 @@ package com.review.bean;
 
 import java.io.Serializable;
 
-public class SitioReview implements Serializable{
+import com.review.utils.Ordenable;
+
+public class SitioReview implements Serializable, Ordenable{
 
 	/**
 	 * 
