@@ -2,13 +2,18 @@ package com.review.utils;
 
 public final class EmailUtils {
 
-  	public static final Integer DIAS_DURACION_CREDENCIAL = 30;
+  	//public static final Integer DIAS_DURACION_CREDENCIAL = 30;
   	public static final String NRO_TELEFONO = "021  123 456";
 
-  	private EmailUtils() {
+  /*	private EmailUtils() {
   		throw new UnsupportedOperationException("Clase no instanciable!");
-  	}
-
+  	}*/
+  	
+  	/**
+  	 * Utilidad que notifica vencimiento de credencial a través de un correo electrónico
+  	 * 
+  	 * @param notificable Instancia de un notificable
+  	 */
   	public static void notificarVencimientoEmail(Notificable notificable) {
   		String email = notificable.getEmail();
   		String nombre = notificable.getNombre();
@@ -20,6 +25,14 @@ public final class EmailUtils {
   		
   		EmailUtils.enviarEmail(email, asunto, cuerpo);
   	}
+  	
+  	/**
+  	 * Utilidad que envia un correo, simula el envío con una impresión
+  	 * 
+  	 * @param email Dirección de correo 
+  	 * @param asunto Motivo del mensaje
+  	 * @param cuerpo Mensaje
+  	 */
   	
   	public static void enviarEmail(String email, String asunto, String cuerpo) {
   		System.out.println("Enviando email a ... " + email);
