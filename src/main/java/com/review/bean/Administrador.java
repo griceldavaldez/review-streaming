@@ -2,7 +2,9 @@ package com.review.bean;
 
 import java.io.Serializable;
 
-public class Administrador extends Usuario implements Serializable {
+import com.review.utils.Notificable;
+
+public class Administrador extends Usuario implements Serializable, Notificable {
 
 	/**
 	 * 
