@@ -19,6 +19,5 @@ public class Administrador extends Usuario implements Serializable {
 				+ ", email=" + email + ", fechaRegistro=" + fechaRegistro + ", fechaVencimiento=" + fechaVencimiento
 				+ ", estado=" + estado + ", tipoUsuario=" + tipoUsuario + "]";
 	}
-
 	
 }
