@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.review.utils.Validable;
 
-public class Serie extends Video implements Serializable, Validable {
+public class Serie extends Video implements Serializable {
 
 	/**
 	 * 
