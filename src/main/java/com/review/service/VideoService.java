@@ -30,7 +30,11 @@ public interface VideoService {
 	 * @param idCategoria Filtro para indicar que se desean obtener los videos con esta categoria. Puede ser null.
 	 * @return Lista de videos que se obtuvieron con los filtros indicados.
 	 */
-	public List<Video> obtenerVideos(Integer idVideo, String titulo, Integer idSitioReview, Integer idCategoria);
+	//public List<Video> obtenerVideos(Long idVideo, String titulo, Integer idSitioReview, Integer idCategoria);
+	
+	public List<Video> obtenerVideos();
+	
+	//public Video obtenerVideoPorId(Long idVideo);
 	
 	/**
 	 * Método para eliminar un video. Facilitar el atributo idVideo para ubicar el video a eliminar.
@@ -38,5 +42,7 @@ public interface VideoService {
 	 * @param idVideo Número identificador del video.
 	 * @return Un numero distinto de cero si la eliminacion de Video se hizo correctamente
 	 */
+	
 	public Integer eliminarVideo(Integer idVideo);
+	
 }

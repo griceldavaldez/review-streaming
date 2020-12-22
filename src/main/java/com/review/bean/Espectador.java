@@ -2,7 +2,9 @@ package com.review.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 
+@Entity
 public class Espectador extends Usuario implements Serializable {
 
 	/**

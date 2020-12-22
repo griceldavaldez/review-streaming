@@ -5,23 +5,25 @@ import java.util.List;
 
 import com.review.utils.Ordenable;
 import com.review.utils.Validable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public abstract class Video implements Serializable, Ordenable, Validable {
+@Entity
+public class Video implements Serializable, Ordenable, Validable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
-	protected Integer idVideo;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	protected long idVideo;
+	
 	protected String titulo;
 	protected String descripcion;
 	protected List<Puntaje> puntajes;
 	protected Categoria categoria;
 	
-	public Integer getIdVideo() {
-		return idVideo;
-	}
 	public void setIdVideo(Integer idVideo) {
 		this.idVideo = idVideo;
 	}
@@ -52,5 +54,8 @@ public abstract class Video implements Serializable, Ordenable, Validable {
 	
 	public String getNombre() {
 		return titulo;
+	}
+	public long getIdVideo() {
+		return idVideo;
 	}
 }

@@ -2,21 +2,29 @@ package com.review.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Promocion implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	private Integer idPromocion;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long idPromocion;
 	/**
 	 * por ejemplo CUPON, DESCUENTO, ACCESO_PRE_ESTRENO
 	 */
 	private String tipoPromocion;
 	private String descripcionPromocion;
 	
-	public Integer getIdPromocion() {
+	public long getIdPromocion() {
 		return idPromocion;
 	}
 	public void setIdPromocion(Integer idPromocion) {

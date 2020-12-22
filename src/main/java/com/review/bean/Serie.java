@@ -3,8 +3,9 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import com.review.utils.Validable;
+import javax.persistence.Entity;
 
+@Entity
 public class Serie extends Video implements Serializable {
 
 	/**

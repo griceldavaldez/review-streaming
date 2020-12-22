@@ -2,8 +2,14 @@ package com.review.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import com.review.utils.Ordenable;
 
+@Entity
 public class SitioReview implements Serializable, Ordenable{
 
 	/**
@@ -11,10 +17,13 @@ public class SitioReview implements Serializable, Ordenable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Integer idSitioReview;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long idSitioReview;
+	
 	private String nombre;
 	
-	public Integer getIdSitioReview() {
+	public long getIdSitioReview() {
 		return idSitioReview;
 	}
 	public void setIdSitioReview(Integer idSitioReview) {

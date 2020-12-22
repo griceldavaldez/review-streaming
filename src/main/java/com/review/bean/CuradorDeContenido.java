@@ -3,7 +3,10 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Entity;
 
+
+@Entity
 public class CuradorDeContenido extends Usuario implements Serializable {
 
 	/**

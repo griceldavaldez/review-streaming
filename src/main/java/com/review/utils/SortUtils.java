@@ -1,10 +1,8 @@
 package com.review.utils;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import com.review.bean.*;
 
 public final class SortUtils {
 	
@@ -42,7 +40,7 @@ public final class SortUtils {
 	}
 	
 //PARA PROBAR EL CODIGO, FUNCIONA DESDE CUALQUIER OTRA CLASE TAMBIEN 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		
 		//para ordenar usuarios 
 		List<Usuario> list = new ArrayList<Usuario>();
@@ -87,5 +85,5 @@ public final class SortUtils {
 		SortUtils.sortPorNombre(SortMode.ASC,list3);
 		SortUtils.imprimirLista(list3, "\nLista ordenada en forma ascendente (A-Z) \n");
 		
-	} 
+	} */
 }

@@ -9,10 +9,10 @@ public class Categoria implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Integer idCategoria;
+	private long idCategoria;
 	private String descripcionCategoria;
 	
-	public Integer getIdCategoria() {
+	public long getIdCategoria() {
 		return idCategoria;
 	}
 	public void setIdCategoria(Integer idCategoria) {

@@ -2,9 +2,16 @@ package com.review.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import com.review.utils.Notificable;
 import com.review.utils.Ordenable;
-public abstract class Usuario implements Serializable, Notificable, Ordenable{
+
+@Entity
+public class Usuario implements Serializable, Notificable, Ordenable{
 
 	public enum TipoUsuarioEnum {
 		ADMINISTRADOR,CURADOR,ESPECTADOR
@@ -16,8 +23,10 @@ public abstract class Usuario implements Serializable, Notificable, Ordenable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	protected long idUsuario;
 	
-	protected Integer idUsuario;
 	protected String nombre;
 	protected String contrasenha;
 	protected String email;
@@ -26,7 +35,7 @@ public abstract class Usuario implements Serializable, Notificable, Ordenable{
 	protected EstadoEnum estado;
 	protected TipoUsuarioEnum tipoUsuario;
 	
-	public Integer getIdUsuario() {
+	public long getIdUsuario() {
 		return idUsuario;
 	}
 	public void setIdUsuario(Integer idUsuario) {
@@ -74,7 +83,5 @@ public abstract class Usuario implements Serializable, Notificable, Ordenable{
 	public void setTipoUsuario(TipoUsuarioEnum tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-	
-	
 	
 }
