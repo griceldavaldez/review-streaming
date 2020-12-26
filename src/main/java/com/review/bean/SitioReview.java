@@ -19,27 +19,40 @@ public class SitioReview implements Serializable, Ordenable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long idSitioReview;
+	private Long idSitioReview;
 	
 	private String nombre;
 	
-	public long getIdSitioReview() {
+	private Double puntajeMaximo;
+
+	public Long getIdSitioReview() {
 		return idSitioReview;
 	}
-	public void setIdSitioReview(Integer idSitioReview) {
+
+	public void setIdSitioReview(Long idSitioReview) {
 		this.idSitioReview = idSitioReview;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	@Override
-	public String toString() {
-		return "SitioReview [idSitioReview=" + idSitioReview + ", nombre=" + nombre + "]";
+
+	public Double getPuntajeMaximo() {
+		return puntajeMaximo;
 	}
 
-	
+	public void setPuntajeMaximo(Double puntajeMaximo) {
+		this.puntajeMaximo = puntajeMaximo;
+	}
+
+	@Override
+	public String toString() {
+		return "SitioReview [idSitioReview=" + idSitioReview + ", nombre=" + nombre + ", puntajeMaximo=" + puntajeMaximo
+				+ "]";
+	}
 	
 }

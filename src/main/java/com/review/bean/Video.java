@@ -5,26 +5,45 @@ import java.util.List;
 
 import com.review.utils.Ordenable;
 import com.review.utils.Validable;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Video implements Serializable, Ordenable, Validable {
 
 	private static final long serialVersionUID = 1L;
 	
+	public enum TipoVideoEnum{
+		SERIE, PELICULA
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	protected long idVideo;
+	protected Long idVideo;
 	
 	protected String titulo;
 	protected String descripcion;
+	@ElementCollection
 	protected List<Puntaje> puntajes;
+	@ManyToOne
 	protected Categoria categoria;
+	@Enumerated(EnumType.STRING)
+	protected TipoVideoEnum tipoVideo;
 	
-	public void setIdVideo(Integer idVideo) {
+	public Long getIdVideo() {
+		return idVideo;
+	}
+	public void setIdVideo(Long idVideo) {
 		this.idVideo = idVideo;
 	}
 	public String getTitulo() {
@@ -51,11 +70,16 @@ public class Video implements Serializable, Ordenable, Validable {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
+	public TipoVideoEnum getTipoVideo() {
+		return tipoVideo;
+	}
+	public void setTipoVideo(TipoVideoEnum tipoVideo) {
+		this.tipoVideo = tipoVideo;
+	}
+	@Override
 	public String getNombre() {
-		return titulo;
+		return this.titulo;
 	}
-	public long getIdVideo() {
-		return idVideo;
-	}
+	
+
 }

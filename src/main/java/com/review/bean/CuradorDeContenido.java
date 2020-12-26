@@ -3,10 +3,13 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 
 @Entity
+@PrimaryKeyJoinColumn(referencedColumnName="idUsuario")
 public class CuradorDeContenido extends Usuario implements Serializable {
 
 	/**
@@ -14,6 +17,7 @@ public class CuradorDeContenido extends Usuario implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@ElementCollection
 	private List<Categoria> catergoriasAModerar;
 	
 	public CuradorDeContenido() {

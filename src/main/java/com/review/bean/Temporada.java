@@ -3,6 +3,13 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Temporada implements Serializable {
 
 	/**
@@ -10,10 +17,20 @@ public class Temporada implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idTemporada;
+	@ElementCollection
 	private List<Episodio> episodios;
 	private int numeroTemporada;
 	private String descripcionTemporada;
 	
+	public Long getIdTemporada() {
+		return idTemporada;
+	}
+	public void setIdTemporada(Long idTemporada) {
+		this.idTemporada = idTemporada;
+	}
 	public List<Episodio> getEpisodios() {
 		return episodios;
 	}
@@ -32,13 +49,10 @@ public class Temporada implements Serializable {
 	public void setDescripcionTemporada(String descripcionTemporada) {
 		this.descripcionTemporada = descripcionTemporada;
 	}
-	
 	@Override
 	public String toString() {
-		return "Temporada [episodios=" + episodios + ", numeroTemporada=" + numeroTemporada + ", descripcionTemporada="
-				+ descripcionTemporada + "]";
+		return "Temporada [idTemporada=" + idTemporada + ", episodios=" + episodios + ", numeroTemporada="
+				+ numeroTemporada + ", descripcionTemporada=" + descripcionTemporada + "]";
 	}
-	
-	
-	
+		
 }

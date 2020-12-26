@@ -2,6 +2,12 @@ package com.review.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Episodio implements Serializable {
 
 	/**
@@ -9,14 +15,16 @@ public class Episodio implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Integer idEpisodio;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idEpisodio;
 	private int numeroEpisodio;
 	private String descripcionEpisodio;
 	
-	public Integer getIdEpisodio() {
+	public Long getIdEpisodio() {
 		return idEpisodio;
 	}
-	public void setIdEpisodio(Integer idEpisodio) {
+	public void setIdEpisodio(Long idEpisodio) {
 		this.idEpisodio = idEpisodio;
 	}
 	public int getNumeroEpisodio() {

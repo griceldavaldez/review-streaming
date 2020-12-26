@@ -3,9 +3,12 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
+@PrimaryKeyJoinColumn(referencedColumnName="idVideo")
 public class Serie extends Video implements Serializable {
 
 	/**
@@ -13,8 +16,13 @@ public class Serie extends Video implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@ElementCollection
 	private List<Temporada> temporadas;
 
+	public Serie() {
+		this.tipoVideo = TipoVideoEnum.SERIE;
+	}
+	
 	public List<Temporada> getTemporadas() {
 		return temporadas;
 	}
@@ -26,7 +34,7 @@ public class Serie extends Video implements Serializable {
 	@Override
 	public String toString() {
 		return "Serie [temporadas=" + temporadas + ", idVideo=" + idVideo + ", titulo=" + titulo + ", descripcion="
-				+ descripcion + ", puntajes=" + puntajes + ", categoria=" + categoria + "]";
+				+ descripcion + ", puntajes=" + puntajes + ", categoria=" + categoria + ", tipoVideo=" + tipoVideo + "]";
 	}
 	
 

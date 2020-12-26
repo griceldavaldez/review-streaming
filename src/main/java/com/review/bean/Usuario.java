@@ -2,15 +2,24 @@ package com.review.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.review.utils.Notificable;
 import com.review.utils.Ordenable;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable, Notificable, Ordenable{
 
 	public enum TipoUsuarioEnum {
@@ -25,20 +34,26 @@ public class Usuario implements Serializable, Notificable, Ordenable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	protected long idUsuario;
+	protected Long idUsuario;
 	
 	protected String nombre;
 	protected String contrasenha;
 	protected String email;
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd")
 	protected Date fechaRegistro;
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd")
 	protected Date fechaVencimiento;
+	@Enumerated(EnumType.STRING)
 	protected EstadoEnum estado;
+	@Enumerated(EnumType.STRING)
 	protected TipoUsuarioEnum tipoUsuario;
 	
-	public long getIdUsuario() {
+	public Long getIdUsuario() {
 		return idUsuario;
 	}
-	public void setIdUsuario(Integer idUsuario) {
+	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 	public String getNombre() {

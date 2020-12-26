@@ -2,8 +2,11 @@ package com.review.bean;
 
 import java.io.Serializable;
 
-//import com.review.utils.Validable;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
+@Entity
+@PrimaryKeyJoinColumn(referencedColumnName="idVideo")
 public class Pelicula extends Video implements Serializable {
 
 	/**
@@ -15,6 +18,10 @@ public class Pelicula extends Video implements Serializable {
 	private String director;
 	private int duracionMinutos;
 	private String saga;
+	
+	public Pelicula() {
+		this.tipoVideo = TipoVideoEnum.PELICULA;
+	}
 	
 	public int getAnhoEstreno() {
 		return anhoEstreno;
@@ -45,7 +52,7 @@ public class Pelicula extends Video implements Serializable {
 	public String toString() {
 		return "Pelicula [anhoEstreno=" + anhoEstreno + ", director=" + director + ", duracionMinutos="
 				+ duracionMinutos + ", saga=" + saga + ", idVideo=" + idVideo + ", titulo=" + titulo + ", descripcion="
-				+ descripcion + ", puntajes=" + puntajes + ", categoria=" + categoria + "]";
+				+ descripcion + ", puntajes=" + puntajes + ", categoria=" + categoria + ", tipoVideo=" + tipoVideo + "]";
 	}
 	
 	
