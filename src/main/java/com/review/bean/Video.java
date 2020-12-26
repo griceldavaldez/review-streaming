@@ -3,9 +3,6 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import com.review.utils.Ordenable;
-import com.review.utils.Validable;
-
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+
+import com.review.utils.interfaces.Ordenable;
+import com.review.utils.interfaces.Validable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

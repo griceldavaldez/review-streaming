@@ -1,5 +1,7 @@
 package com.review.utils;
 
+import com.review.utils.interfaces.Validable;
+
 public class ValidarUtils {
 	
 	/**

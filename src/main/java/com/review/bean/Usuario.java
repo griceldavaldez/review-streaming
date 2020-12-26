@@ -15,8 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.review.utils.Notificable;
-import com.review.utils.Ordenable;
+import com.review.utils.interfaces.Notificable;
+import com.review.utils.interfaces.Ordenable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

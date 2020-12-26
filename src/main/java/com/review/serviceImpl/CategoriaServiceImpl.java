@@ -1,16 +1,14 @@
 package com.review.serviceImpl;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.review.bean.Categoria;
 import com.review.repository.CategoriaRepository;
 import com.review.service.CategoriaService;
+import com.review.utils.ListarUtils;
 
 
 @Service
@@ -33,21 +31,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 	public List<Categoria> obtenerCategorias(Long idCategoria, String descripcionCategoria) {
 		Boolean hayIdCategoria = idCategoria != null && idCategoria.compareTo((long) 0) != 0;
 		Boolean hayDescripcionCategoria = descripcionCategoria != null && !descripcionCategoria.isEmpty();
-		/*
-		if(!hayDescripcionCategoria && !hayIdCategoria) {
-			//lanzar una excepcion
-			return null;
-		}else {
-			if(hayDescripcionCategoria && hayIdCategoria) {
-				return categoriaRepository.findByIdDescripcionCategoria(idCategoria, descripcionCategoria);
-			}else {
-				if(hayDescripcionCategoria) {
-					return categoriaRepository.findByDescripcionCategoria(descripcionCategoria);
-				}else {
-					return categoriaRepository.findByIdCategoria(idCategoria);
-				}
-			}
-		}*/
+		
 		Categoria c = new Categoria();
 		if(hayIdCategoria) {
 			c.setIdCategoria(idCategoria);
@@ -55,13 +39,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 		if(hayDescripcionCategoria) {
 			c.setDescripcionCategoria(descripcionCategoria);
 		}
-		Example<Categoria> categoriaExample = Example.of(c);
-		Iterator<Categoria> iterator = categoriaRepository.findAll(categoriaExample).iterator();
-		List<Categoria> categorias = new ArrayList<>();
-		while(iterator.hasNext()) {
-			categorias.add(iterator.next());
-		}
-		return categorias;
+		return ListarUtils.listar(c, categoriaRepository);
 	}
 
 	@Override

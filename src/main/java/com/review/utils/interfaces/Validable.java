@@ -1,4 +1,4 @@
-package com.review.utils;
+package com.review.utils.interfaces;
 
 import java.util.List;
 

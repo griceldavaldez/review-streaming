@@ -1,5 +1,7 @@
 package com.review.utils;
 
+import com.review.utils.interfaces.Notificable;
+
 public final class EmailUtils {
 
   	//public static final Integer DIAS_DURACION_CREDENCIAL = 30;
@@ -10,7 +12,7 @@ public final class EmailUtils {
   	}*/
   	
   	/**
-  	 * Utilidad que notifica vencimiento de credencial a través de un correo electrónico
+  	 * Utilidad que notifica vencimiento de credencial a travï¿½s de un correo electrï¿½nico
   	 * 
   	 * @param notificable Instancia de un notificable
   	 */
@@ -27,9 +29,9 @@ public final class EmailUtils {
   	}
   	
   	/**
-  	 * Utilidad que envia un correo, simula el envío con una impresión
+  	 * Utilidad que envia un correo, simula el envï¿½o con una impresiï¿½n
   	 * 
-  	 * @param email Dirección de correo 
+  	 * @param email Direcciï¿½n de correo 
   	 * @param asunto Motivo del mensaje
   	 * @param cuerpo Mensaje
   	 */

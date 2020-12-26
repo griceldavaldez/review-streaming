@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.review.utils.Ordenable;
+import com.review.utils.interfaces.Ordenable;
 
 @Entity
 public class SitioReview implements Serializable, Ordenable{

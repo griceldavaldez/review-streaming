@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.review.utils.interfaces.Ordenable;
+
 public final class SortUtils {
 	
 	public enum SortMode {ASC, DESC}
@@ -47,7 +49,7 @@ public final class SortUtils {
 		Administrador u = new Administrador();
 		u.setNombre("Carlos");
 		Administrador u2 = new Administrador();
-		u2.setNombre("José");
+		u2.setNombre("Josï¿½");
 		Administrador u3 = new Administrador();
 		u3.setNombre("Ana");
 		list.add(u);
