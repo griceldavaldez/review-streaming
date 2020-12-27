@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.review.bean.SitioReview;
 
 @Repository
-public interface SitioReviewRepository extends PagingAndSortingRepository<SitioReview, Long> {
+public interface SitioReviewRepository extends PagingAndSortingRepository<SitioReview, Long>, QueryByExampleExecutor<SitioReview> {
 
 }

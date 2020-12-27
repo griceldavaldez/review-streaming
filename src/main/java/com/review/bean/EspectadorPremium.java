@@ -3,8 +3,8 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
@@ -16,7 +16,7 @@ public class EspectadorPremium extends Espectador implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ElementCollection
+	@OneToMany
 	private List<Promocion> promociones;
 	
 	public List<Promocion> getPromociones() {

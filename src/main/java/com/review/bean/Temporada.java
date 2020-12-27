@@ -3,11 +3,12 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Temporada implements Serializable {
@@ -20,7 +21,7 @@ public class Temporada implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idTemporada;
-	@ElementCollection
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Episodio> episodios;
 	private int numeroTemporada;
 	private String descripcionTemporada;

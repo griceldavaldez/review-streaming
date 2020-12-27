@@ -3,13 +3,13 @@ package com.review.serviceImpl;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import com.review.bean.Video;
-import com.review.repository.VideoRepository;
-import com.review.service.VideoService;
-import com.review.utils.ValidarUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.review.bean.Video;
+import com.review.repository.VideoRepository;
+import com.review.service.VideoService;
 
 
 @Service
@@ -19,12 +19,9 @@ public class VideoServiceImpl implements VideoService {
 	private VideoRepository videoRepository;
 
 	@Override
-	public Integer crearVideo(Video video) {
-		if(ValidarUtils.validarVideo(video)) {
-			videoRepository.save(video);
-			return 1;
-		}
-		return null;
+	public Video crearVideo(Video video) {
+		//TODO validar creacion de video
+		return videoRepository.save(video);
 	}
 
 	@Override
@@ -55,5 +52,4 @@ public class VideoServiceImpl implements VideoService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

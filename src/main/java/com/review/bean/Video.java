@@ -3,7 +3,7 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.review.utils.interfaces.Ordenable;
 import com.review.utils.interfaces.Validable;
@@ -33,7 +34,7 @@ public class Video implements Serializable, Ordenable, Validable {
 	
 	protected String titulo;
 	protected String descripcion;
-	@ElementCollection
+	@OneToMany(cascade = CascadeType.PERSIST)
 	protected List<Puntaje> puntajes;
 	@ManyToOne
 	protected Categoria categoria;

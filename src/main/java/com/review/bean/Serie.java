@@ -3,8 +3,9 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
@@ -16,7 +17,7 @@ public class Serie extends Video implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ElementCollection
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Temporada> temporadas;
 
 	public Serie() {

@@ -6,15 +6,15 @@ import com.review.bean.Video;
 
 public interface VideoService {
 	/**
-	 * Método para crear un video. Recibirá instancia de Serie o de Pelicula. Facilitar los atributos del video a crear, excepto el idVideo (que se crea automáticamente).
+	 * MÃ©todo para crear un video. RecibirÃ¡ instancia de Serie o de Pelicula. Facilitar los atributos del video a crear, excepto el idVideo (que se crea automÃ¡ticamente).
 	 * 
 	 * @param video
-	 * @return Un numero distinto de cero si la creacion de Video se hizo correctamente
+	 * @return El video recientemente creado
 	 */
-	public Integer crearVideo(Video video);
+	public Video crearVideo(Video video);
 	
 	/**
-	 * Método para editar un video. Facilitar el atributo idVideo para ubicar el video a editar, y luego los nuevos valores de los atributos a actualizar.
+	 * Mï¿½todo para editar un video. Facilitar el atributo idVideo para ubicar el video a editar, y luego los nuevos valores de los atributos a actualizar.
 	 * 
 	 * @param video El video indicando los atributos a modificar.
 	 * @return Un numero distinto de cero si la modificacion de Video se hizo correctamente
@@ -22,7 +22,7 @@ public interface VideoService {
 	public Integer editarVideo(Video video);
 	
 	/**
-	 * Método para obtener una lista de videos por ciertos filtros. Si no se indican filtros, se obtienen todos los videos.
+	 * Mï¿½todo para obtener una lista de videos por ciertos filtros. Si no se indican filtros, se obtienen todos los videos.
 	 * 
 	 * @param idVideo Filtro para indicar que se desean obtener los videos con este id. Puede ser null.
 	 * @param titulo Filtro para indicar que se desean obtener los videos con este titulo (o que contenga). Puede ser null.
@@ -37,9 +37,9 @@ public interface VideoService {
 	//public Video obtenerVideoPorId(Long idVideo);
 	
 	/**
-	 * Método para eliminar un video. Facilitar el atributo idVideo para ubicar el video a eliminar.
+	 * Mï¿½todo para eliminar un video. Facilitar el atributo idVideo para ubicar el video a eliminar.
 	 * 
-	 * @param idVideo Número identificador del video.
+	 * @param idVideo Nï¿½mero identificador del video.
 	 * @return Un numero distinto de cero si la eliminacion de Video se hizo correctamente
 	 */
 	

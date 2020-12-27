@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.review.bean.Serie;
 import com.review.bean.Video;
 import com.review.constants.ApiPaths;
 import com.review.service.VideoService;
@@ -31,8 +32,16 @@ public class VideoController {
 	/**
 	 * Metodo que agrega un nuevo video a la base de datos
 	 */
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/add", method = RequestMethod.POST)
     public void add(@RequestBody Video video) {
 			videoService.crearVideo(video);
+	}*/
+	
+	/**
+	 * Método que agrega un video tipo serie.
+	 */
+	@RequestMapping(value = "/add/serie", method = RequestMethod.POST)
+    public void addSerie(@RequestBody Serie serie) {
+			videoService.crearVideo(serie);
 	}
 }
