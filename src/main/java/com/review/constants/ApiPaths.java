@@ -7,6 +7,5 @@ public class ApiPaths {
 	public static final String CATEGORIA = BASE_API + "/categoria";
 	public static final String SITIO = BASE_API + "/sitio";
 	public static final String PROMOCION = BASE_API + "/promocion";
-	public static final String SITIO_REVIEW = BASE_API + "/sitioReview";
 	public static final String USUARIO = BASE_API + "/usuario";
 }

@@ -3,6 +3,7 @@ package com.review.service;
 import java.util.List;
 
 import com.review.bean.Categoria;
+import com.review.exceptions.ReviewException;
 
 public interface CategoriaService {
 	
@@ -10,26 +11,26 @@ public interface CategoriaService {
 	 * @param categoria Datos de la categoría a crear.
 	 * @return La categoría creada.
 	 */
-	public Categoria crearCategoria(Categoria categoria);
+	public Categoria crearCategoria(Categoria categoria) throws ReviewException;
 	
 	
 	/** Edición de la categoría.
 	 * @param categoria Datos nuevos de la categoría.
 	 * @return La categoría editada.
 	 */
-	public Categoria editarCategoria(Categoria categoria);
+	public Categoria editarCategoria(Categoria categoria) throws ReviewException;
 	
 
 	/** Obtención de lista de categorías disponibles. 
 	 * @param idCategoria Filtro de id que indica el id de la categoría a obtener.
 	 * @param descripcionCategoria Filtro que indica la descripción de la categoría a obtener.
-	 * @return
+	 * @return Lista de categorias con dicho filtro
 	 */
-	public List<Categoria> obtenerCategorias(Long idCategoria, String descripcionCategoria);
+	public List<Categoria> obtenerCategorias(Long idCategoria, String descripcionCategoria) throws ReviewException;
 	
 	/** Eliminación de categoría.
 	 * @param categoria Datos de la categoría a eliminar.
 	 */
-	public void eliminarCategoria(Categoria categoria);
+	public void eliminarCategoria(Categoria categoria) throws ReviewException;
 
 }

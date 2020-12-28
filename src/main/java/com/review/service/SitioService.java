@@ -6,7 +6,7 @@ import com.review.bean.SitioReview;
 
 public interface SitioService {
 	/**
-	 * M�todo para crear un sitio de review. Facilitar los atributos del sitio a crear, excepto el idSitioReview (que se crea autom�ticamente).
+	 * Metodo para crear un sitio de review. Facilitar los atributos del sitio a crear, excepto el idSitioReview (que se crea autom�ticamente).
 	 * 
 	 * @param sitioReview
 	 * @return El sitio creado.
@@ -22,7 +22,7 @@ public interface SitioService {
 	public SitioReview editarSitio(SitioReview sitioReview);
 	
 	/**
-	 * M�todo para obtener una lista de sitios de review por ciertos filtros. Si no se indican filtros, se obtienen todos los sitios.
+	 * Metodo para obtener una lista de sitios de review por ciertos filtros. Si no se indican filtros, se obtienen todos los sitios.
 	 * 
 	 * @param idSitioReview Filtro para indicar que se desean obtener los sitios con este id. Puede ser null.
 	 * @param nombre Filtro para indicar que se desean obtener los sitios con nombre (o que por lo menos contengan este string dentro del nombre). Puede ser null.
