@@ -53,6 +53,7 @@ public interface UsuarioService {
 	 * 
 	 * Para simular el envio de la notificacion se imprimira en el log. Este metodo debe revisar la fecha de vencimiento de todos los usuarios
 	 * y notificarle
+	 * @throws ReviewException 
 	 */
-	public void notificarVencimiento();
+	public void notificarVencimiento() throws ReviewException;
 }

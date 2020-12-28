@@ -67,4 +67,20 @@ public class UsuarioController {
     public Usuario modify(@RequestBody Usuario usuario) {
 			return  usuarioService.editarUsuario(usuario);
 	}
+	
+	/**
+	 * Notificar vencimiento a usuarios
+	 * @throws ReviewException 
+	 */
+	@RequestMapping(value = "/notificar-vencimiento-usuarios", method = RequestMethod.GET)
+    public void notificarVencimientoUsuarios() throws ReviewException {
+			try {
+				usuarioService.notificarVencimiento();
+			} catch (ReviewException e1) {
+				throw e1;
+			} catch (Exception e) {
+				System.out.println(e);
+				throw new ReviewException("Ocurrió un error inesperado al notificar vencimiento a usuarios.");
+			}
+	}
 }

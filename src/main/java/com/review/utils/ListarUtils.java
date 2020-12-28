@@ -19,16 +19,22 @@ public class ListarUtils {
 	 * @return La lista resultante de la búsqueda.
 	 */
 	public static <T> List<T> listar(T filtro, QueryByExampleExecutor<T> repository){
-		
-		ExampleMatcher matcher = MatcherUtils.getStringMatcher(
-									ExampleMatcher.StringMatcher.CONTAINING, 
-									getStringMatches(filtro));
-		
-		Example<T> example = (Example<T>) Example.of(filtro);
-		if(matcher != null) {
-			example = (Example<T>) Example.of(filtro, matcher);
+		Iterator<T> iterator = null;
+		if(filtro == null) {
+			//no se tiene filtro, se devolvera todo
+			iterator = repository.findAll().iterator();
+		}else {
+			ExampleMatcher matcher = MatcherUtils.getStringMatcher(
+					ExampleMatcher.StringMatcher.CONTAINING, 
+					getStringMatches(filtro));
+
+			Example<T> example = (Example<T>) Example.of(filtro);
+			if(matcher != null) {
+				example = (Example<T>) Example.of(filtro, matcher);
+			}
+			iterator = repository.findAll(example).iterator();
 		}
-		Iterator<T> iterator = repository.findAll(example).iterator();
+		
 		List<T> lista = new ArrayList<>();
 		while(iterator.hasNext()) {
 			lista.add(iterator.next());
