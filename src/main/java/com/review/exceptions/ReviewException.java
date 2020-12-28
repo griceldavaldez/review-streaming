@@ -2,6 +2,10 @@ package com.review.exceptions;
 
 import java.io.Serializable;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 public class ReviewException extends Exception implements Serializable{
 
 	/**
@@ -12,6 +16,7 @@ public class ReviewException extends Exception implements Serializable{
 	private String mensaje;
 
 	public ReviewException(String mensaje) {
+		super(mensaje);
 		this.mensaje = mensaje;
 	}
 
@@ -21,14 +26,10 @@ public class ReviewException extends Exception implements Serializable{
 
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
-		//TODO setear cause message
 	}
 
 	@Override
 	public String toString() {
 		return "ReviewException [mensaje=" + mensaje + "]";
 	}
-	
-	
-	
 }

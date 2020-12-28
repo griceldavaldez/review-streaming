@@ -34,6 +34,7 @@ public class CategoriaController {
         } catch (ReviewException e1) {
 			throw e1;
 		} catch (Exception e) {
+			System.out.println(e);
 			throw new ReviewException("Ocurrió un error inesperado al listar Categorias.");
 		}
     }
@@ -49,6 +50,7 @@ public class CategoriaController {
 			} catch (ReviewException e1) {
 				throw e1;
 			} catch (Exception e) {
+				System.out.println(e);
 				throw new ReviewException("Ocurrió un error inesperado al agregar categoria.");
 			}
 	}
@@ -64,6 +66,7 @@ public class CategoriaController {
 			} catch (ReviewException e1) {
 				throw e1;
 			} catch (Exception e) {
+				System.out.println(e);
 				throw new ReviewException("Ocurrió un error inesperado al eliminar categoria.");
 			}
 	}
@@ -79,6 +82,7 @@ public class CategoriaController {
 			} catch (ReviewException e1) {
 				throw e1;
 			} catch (Exception e) {
+				System.out.println(e);
 				throw new ReviewException("Ocurrió un error inesperado al modificar categoria.");
 			}
 	}

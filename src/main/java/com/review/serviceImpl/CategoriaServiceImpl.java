@@ -19,13 +19,13 @@ public class CategoriaServiceImpl implements CategoriaService {
 	private CategoriaRepository categoriaRepository;
 
 	@Override
-	public Categoria crearCategoria(Categoria categoria) {
+	public Categoria crearCategoria(Categoria categoria) throws ReviewException{
 		//controlamos que no reciba una instancia vacia para poder guardar en la BD
 		Boolean hayDescripcionCategoria = categoria.getDescripcionCategoria() != null && !categoria.getDescripcionCategoria().isEmpty();
 		if(hayDescripcionCategoria) {
 			return categoriaRepository.save(categoria);
 		}
-		return null;
+		throw new ReviewException("No se puede crear una categoria sin indicar su descripcion");
 	}
 
 	@Override
