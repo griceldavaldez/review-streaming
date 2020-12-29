@@ -79,7 +79,5 @@ public class ValidarUtils {
 	public static Boolean isEmptyString(String val) {
 		return val == null || val.isBlank();
 	}
-	
-	
 }
 

@@ -32,17 +32,22 @@ public class VideoServiceImpl implements VideoService {
 	@Override
 	public Pelicula editarPelicula(Pelicula video) throws ReviewException {
 		if(video.getIdVideo() != null && videoRepository.existsById(video.getIdVideo())) {
-			validarCamposObligatoriosVideo(video);
 			Optional<Video> val = videoRepository.findById(video.getIdVideo());
 			Pelicula videoExistente = (Pelicula)val.get();
 			
 			actualizarAtributosComunes(video, videoExistente);
-			
-			videoExistente.setAnhoEstreno(video.getAnhoEstreno());
-			videoExistente.setDirector(video.getDirector());
-			videoExistente.setSaga(video.getSaga());
-			videoExistente.setDuracionMinutos(video.getDuracionMinutos());
-			
+			if(video.getAnhoEstreno() != null) {
+				videoExistente.setAnhoEstreno(video.getAnhoEstreno());
+			}
+			if(! ValidarUtils.isEmptyString(video.getDirector())) {
+				videoExistente.setDirector(video.getDirector());
+			}
+			if(! ValidarUtils.isEmptyString(video.getSaga())) {
+				videoExistente.setSaga(video.getSaga());
+			}
+			if(video.getDuracionMinutos() != null) {
+				videoExistente.setDuracionMinutos(video.getDuracionMinutos());
+			}
 			return videoRepository.save(videoExistente);
 			
 		}else {
@@ -53,13 +58,14 @@ public class VideoServiceImpl implements VideoService {
 	@Override
 	public Serie editarSerie(Serie video) throws ReviewException {
 		if(video.getIdVideo() != null && videoRepository.existsById(video.getIdVideo())) {
-			validarCamposObligatoriosVideo(video);
 			Optional<Video> val = videoRepository.findById(video.getIdVideo());
 			Serie videoExistente = (Serie)val.get();
 			
 			actualizarAtributosComunes(video, videoExistente);
 			
-			videoExistente.setTemporadas(video.getTemporadas());
+			if(video.getTemporadas() != null  ) {
+				videoExistente.setTemporadas(video.getTemporadas());
+			}
 			
 			return videoRepository.save(videoExistente);
 			
@@ -68,22 +74,21 @@ public class VideoServiceImpl implements VideoService {
 		}
 	}
 	
-	private void actualizarAtributosComunes(Video videoParam, Video videoExistente) {
-		videoExistente.setTitulo(videoParam.getTitulo());
-		videoExistente.setDescripcion(videoParam.getDescripcion());
-		videoExistente.setPuntajes(videoParam.getPuntajes());
-		videoExistente.setCategoria(videoParam.getCategoria());
+	private void actualizarAtributosComunes(Video video, Video videoExistente) {
+		if(! ValidarUtils.isEmptyString(video.getTitulo())) {
+			videoExistente.setTitulo(video.getTitulo());
+		}
+		if(! ValidarUtils.isEmptyString(video.getDescripcion())) {
+			videoExistente.setDescripcion(video.getDescripcion());
+		}
+		if(video.getPuntajes() != null) {
+			videoExistente.setPuntajes(video.getPuntajes());
+		}
+		if(video.getCategoria() != null) {
+			videoExistente.setCategoria(video.getCategoria());
+		}		
 	}
 
-	private void validarCamposObligatoriosVideo(Video video) throws ReviewException {
-		if(ValidarUtils.isEmptyString(video.getTitulo())) {
-			throw new ReviewException("El video no puede estar sin titulo.");
-		}
-		if(ValidarUtils.isEmptyString(video.getDescripcion())) {
-			throw new ReviewException("El video no puede estar sin descripcion.");
-		}
-	}
-	
 	@Override
 	public List<Video> obtenerVideos(Long idVideo, String titulo, TipoVideoEnum tipoVideo) {
 		Video video = new Video();

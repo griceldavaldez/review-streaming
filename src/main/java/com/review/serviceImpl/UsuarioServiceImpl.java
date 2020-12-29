@@ -40,6 +40,17 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario editarUsuario(Usuario usuario) throws ReviewException {
 		if(usuario.getIdUsuario() != null || usuarioRepository.existsById(usuario.getIdUsuario())) {
+			Optional<Usuario> val = usuarioRepository.findById(usuario.getIdUsuario());
+			Usuario usuarioExistente = val.get();
+			if(! ValidarUtils.isEmptyString(usuario.getNombre())) {
+				usuarioExistente.setNombre(usuario.getNombre());
+			}
+			if(! ValidarUtils.isEmptyString(usuario.getContrasenha())) {
+				usuarioExistente.setContrasenha(usuario.getContrasenha());
+			}
+			if(! ValidarUtils.isEmptyString(usuario.getEmail())) {
+				usuarioExistente.setEmail(usuario.getEmail());
+			}
 			return usuarioRepository.save(usuario);
 		}else {
 			throw new ReviewException("No se puede editar el usuario porque no existe en la base de datos");

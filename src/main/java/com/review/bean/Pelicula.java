@@ -14,19 +14,19 @@ public class Pelicula extends Video implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int anhoEstreno;
+	private Integer anhoEstreno;
 	private String director;
-	private int duracionMinutos;
+	private Integer duracionMinutos;
 	private String saga;
 	
 	public Pelicula() {
 		this.tipoVideo = TipoVideoEnum.PELICULA;
 	}
 	
-	public int getAnhoEstreno() {
+	public Integer getAnhoEstreno() {
 		return anhoEstreno;
 	}
-	public void setAnhoEstreno(int anhoEstreno) {
+	public void setAnhoEstreno(Integer anhoEstreno) {
 		this.anhoEstreno = anhoEstreno;
 	}
 	public String getDirector() {
@@ -35,10 +35,10 @@ public class Pelicula extends Video implements Serializable {
 	public void setDirector(String director) {
 		this.director = director;
 	}
-	public int getDuracionMinutos() {
+	public Integer getDuracionMinutos() {
 		return duracionMinutos;
 	}
-	public void setDuracionMinutos(int duracionMinutos) {
+	public void setDuracionMinutos(Integer duracionMinutos) {
 		this.duracionMinutos = duracionMinutos;
 	}
 	public String getSaga() {
