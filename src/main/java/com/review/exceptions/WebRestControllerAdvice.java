@@ -27,6 +27,7 @@ public class WebRestControllerAdvice {
 		}
 	}
 
+	@ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler(ReviewException.class)
 	public ResponseMsg handleReviewException(ReviewException ex) {
 		ResponseMsg responseMsg = new ResponseMsg(ex.getMessage());

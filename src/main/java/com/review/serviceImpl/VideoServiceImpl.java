@@ -1,12 +1,12 @@
 package com.review.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.review.bean.Video.TipoVideoEnum;
-import com.review.bean.Categoria;
 import com.review.bean.Video;
 import com.review.exceptions.ReviewException;
 import com.review.repository.VideoRepository;
@@ -29,20 +29,29 @@ public class VideoServiceImpl implements VideoService {
 
 	@Override
 	public Video editarVideo(Video video) throws ReviewException {
-		if(video.getIdVideo() != null || videoRepository.existsById(video.getIdVideo())) {
-			return videoRepository.save(video);
+		if(video.getIdVideo() != null && videoRepository.existsById(video.getIdVideo())) {
+			Optional<Video> val = videoRepository.findById(video.getIdVideo());
+			Video videoExistente = val.get();
+			/*Haciendo de esta forma si modifica correctamente el video existente en la BD*/
+			if(! ValidarUtils.isEmptyString(video.getTitulo())) {
+				videoExistente.setTitulo(video.getTitulo());
+			}
+			if(! ValidarUtils.isEmptyString(video.getDescripcion())) {
+				videoExistente.setDescripcion(video.getDescripcion());
+			}
+			return videoRepository.save(videoExistente);
+			
 		}else {
 			throw new ReviewException("No se puede editar el video porque no existe en la base de datos");
 		}
 	}
 
 	@Override
-	public List<Video> obtenerVideos(Long idVideo, String titulo, TipoVideoEnum tipoVideo, Categoria categoria) {
+	public List<Video> obtenerVideos(Long idVideo, String titulo, TipoVideoEnum tipoVideo) {
 		Video video = new Video();
 		video.setIdVideo(idVideo);
 		video.setTitulo(titulo);
 		video.setTipoVideo(tipoVideo);
-		video.setCategoria(categoria);
 		return ListarUtils.listar(video, videoRepository);
 	}
 	

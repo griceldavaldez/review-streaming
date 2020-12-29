@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.review.bean.Video;
 import com.review.exceptions.ReviewException;
-import com.review.bean.Categoria;
 import com.review.bean.Video.TipoVideoEnum;
 
 public interface VideoService {
@@ -35,7 +34,7 @@ public interface VideoService {
 	 */
 	//public List<Video> obtenerVideos(Long idVideo, String titulo, Integer idSitioReview, Integer idCategoria);
 	
-	public List<Video> obtenerVideos(Long idVideo, String titulo, TipoVideoEnum tipoVideo, Categoria categoria);
+	public List<Video> obtenerVideos(Long idVideo, String titulo, TipoVideoEnum tipoVideo);
 	
 	
 	/**

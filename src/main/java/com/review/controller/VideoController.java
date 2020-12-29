@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.review.bean.Categoria;
 import com.review.bean.Pelicula;
 import com.review.bean.Serie;
 import com.review.bean.Video;
@@ -32,9 +31,8 @@ public class VideoController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Video> list(@RequestParam(name = "id_video",  required = false) Long idVideo,
     		@RequestParam(name = "titulo",  required = false) String titulo,
-    		@RequestParam(name = "categoria",  required = false) Categoria categoria,
     		@RequestParam(name = "tipo_video", required = false) TipoVideoEnum tipoVideo){
-			return videoService.obtenerVideos(idVideo, titulo, tipoVideo, categoria );
+			return videoService.obtenerVideos(idVideo, titulo, tipoVideo);
     }
 	
 	/**
@@ -55,7 +53,7 @@ public class VideoController {
 	/**
 	 * Método que agrega un video tipo serie.
 	 */
-	@RequestMapping(value = "/add/serie", method = RequestMethod.POST)
+	@RequestMapping(value = "/add-serie", method = RequestMethod.POST)
     public Video addSerie(@RequestBody Serie serie) throws ReviewException{
 		try {
 			return videoService.crearVideo(serie);
@@ -67,8 +65,8 @@ public class VideoController {
 		}	
 	}
 	
-	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-    public Video modify(@RequestBody Video video) throws ReviewException{
+	@RequestMapping(value = "/modify-serie", method = RequestMethod.POST)
+    public Video modifySerie(@RequestBody Serie video) throws ReviewException{
 		try {
 			return videoService.editarVideo(video);
 		}catch (ReviewException e1) {
@@ -78,6 +76,19 @@ public class VideoController {
 			throw new ReviewException("Ocurrió un error inesperado al editar video.");
 		}
 	}
+	
+	@RequestMapping(value = "/modify-pelicula", method = RequestMethod.POST)
+    public Video modifyPelicula(@RequestBody Pelicula video) throws ReviewException{
+		try {
+			return videoService.editarVideo(video);
+		}catch (ReviewException e1) {
+			throw e1;
+		} catch (Exception e) {
+			System.out.println(e);
+			throw new ReviewException("Ocurrió un error inesperado al editar video.");
+		}
+	}
+	
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public void delete(@RequestParam(name = "id_video",  required = true) Long idVideo) throws ReviewException{
