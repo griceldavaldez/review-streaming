@@ -18,6 +18,7 @@ public class Espectador extends Usuario implements Serializable {
 	
 	public Espectador() {
 		this.setTipoUsuario(TipoUsuarioEnum.ESPECTADOR);
+		this.isPremium = false;
 	}
 
 	public Boolean getIsPremium() {

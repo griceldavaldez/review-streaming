@@ -19,6 +19,24 @@ public class EspectadorPremium extends Espectador implements Serializable {
 	@OneToMany
 	private List<Promocion> promociones;
 	
+	
+	
+	
+	public EspectadorPremium(Espectador espectador) {
+		this.nombre = espectador.nombre;
+		this.contrasenha = espectador.contrasenha;
+		this.email = espectador.email;
+		this.estado = espectador.estado;
+		this.fechaRegistro = espectador.fechaRegistro;
+		this.fechaVencimiento = espectador.fechaVencimiento;
+		this.tipoUsuario = espectador.tipoUsuario;
+		this.isPremium = true;
+	}
+	
+	public EspectadorPremium() {
+		this.isPremium = true;
+	}
+	
 	public List<Promocion> getPromociones() {
 		return promociones;
 	}

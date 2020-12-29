@@ -26,10 +26,10 @@ public class ListarUtils {
 		}else {
 			ExampleMatcher matcher = MatcherUtils.getStringMatcher(
 					ExampleMatcher.StringMatcher.CONTAINING, 
-					getStringMatches(filtro));
+					getStringMatches(filtro));  //matcher patron a buscar
 
-			Example<T> example = (Example<T>) Example.of(filtro);
-			if(matcher != null) {
+			Example<T> example = (Example<T>) Example.of(filtro);  
+			if(matcher != null) { 
 				example = (Example<T>) Example.of(filtro, matcher);
 			}
 			iterator = repository.findAll(example).iterator();
@@ -42,7 +42,7 @@ public class ListarUtils {
 		return lista;
 	}
 	
-	/** Para obtener todos los nombres de los atributos tipo string de la instancia filtro.
+	/** Para obtener todos los nombres de los atributos tipo string de la instancia filtro. Uso de java reflection
 	 * @param <T> Tipo de dato de la instancia.
 	 * @param filtro Instancia a revisar.
 	 * @return Lista de String.
@@ -50,7 +50,7 @@ public class ListarUtils {
 	private static <T> List<String> getStringMatches(T filtro) {
 		List<String> stringMatches = new ArrayList<>();
 		for(Field f : filtro.getClass().getDeclaredFields()) {
-			if(f.getType().equals(String.class)) {
+			if(f.getType().equals(String.class)) {  //para devolver los nombres de los atributos de tipo string
 				stringMatches.add(f.getName());
 			}
 		}

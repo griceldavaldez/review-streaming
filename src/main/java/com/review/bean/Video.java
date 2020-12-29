@@ -16,11 +16,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.review.utils.interfaces.Ordenable;
-import com.review.utils.interfaces.Validable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Video implements Serializable, Ordenable, Validable {
+public class Video implements Serializable, Ordenable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -77,6 +76,7 @@ public class Video implements Serializable, Ordenable, Validable {
 	public void setTipoVideo(TipoVideoEnum tipoVideo) {
 		this.tipoVideo = tipoVideo;
 	}
+	
 	@Override
 	public String getNombre() {
 		return this.titulo;

@@ -3,6 +3,7 @@ package com.review.service;
 import java.util.List;
 
 import com.review.bean.Usuario;
+import com.review.bean.Usuario.EstadoEnum;
 import com.review.bean.Usuario.TipoUsuarioEnum;
 import com.review.exceptions.ReviewException;
 
@@ -26,7 +27,7 @@ public interface UsuarioService {
 	 * @return Usuario modificado
 	 */
 	
-	public Usuario editarUsuario(Usuario usuario);
+	public Usuario editarUsuario(Usuario usuario) throws ReviewException;
 	
 	
 	/**
@@ -38,15 +39,14 @@ public interface UsuarioService {
 	 * @return Lista de usuarios con los filtros indicados 
 	 */
 	
-	public List<Usuario> obtenerUsuario(Long idUsuario, String nombre, TipoUsuarioEnum rol);
-	
+	public List<Usuario> obtenerUsuario(Long idUsuario, String nombre, TipoUsuarioEnum rol, String email, EstadoEnum estado);
 	
 	/**
 	 * Metodo para eliminar un usuario. Facilitar el atributo idUsuario para ubicar al usuario a eliminar.
 	 * 
 	 * @param idUsuario Numero identificador del usuario.
 	 */
-	public void eliminarUsuario(Long idUsuario);
+	public void eliminarUsuario(Long idUsuario) throws ReviewException;
 	
 	/**
 	 * Metodo que envia un mensaje por correo o push notificacion al usuario cuyo credencial esta por vencer
@@ -56,4 +56,25 @@ public interface UsuarioService {
 	 * @throws ReviewException 
 	 */
 	public void notificarVencimiento() throws ReviewException;
+	
+	
+	/**
+	 * Metodo que renueva la credencial de un usuario
+	 * 
+	 * @param idUsuario
+	 * @throws ReviewException 
+	 */
+	
+	public Usuario renovarCredencial(Long idUsuario) throws ReviewException;
+
+
+	/**
+	 * Metodo que convierte un espectador a premium
+	 * 
+	 * @param idUsuario
+	 * @return
+	 * @throws ReviewException
+	 */
+	public Usuario convertirPremium(Long idUsuario) throws ReviewException;
+
 }

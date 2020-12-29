@@ -33,7 +33,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 		/* Primero comprobamos si existe la categoria a editar y 
 		luego controlamos si la instanacia si la instancia tiene un campo a modificar*/
 		if(categoriaRepository.existsById(categoria.getIdCategoria())) {
-			Boolean hayDescripcionCategoria = categoria.getDescripcionCategoria()  != null && !categoria.getDescripcionCategoria() .isEmpty();
+			Boolean hayDescripcionCategoria = categoria.getDescripcionCategoria()  != null && !categoria.getDescripcionCategoria().isEmpty();
 			if (hayDescripcionCategoria) {
 				return categoriaRepository.save(categoria);
 			}

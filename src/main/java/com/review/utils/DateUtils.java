@@ -3,7 +3,7 @@ package com.review.utils;
 import java.util.Calendar;
 import java.util.Date;
 
-public final class Utils {
+public final class DateUtils {
 	
 	/**
 	 * @param fecha Fecha a la que se sumarán los días indicados.
