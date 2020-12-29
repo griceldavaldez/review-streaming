@@ -1,5 +1,6 @@
 package com.review.utils;
 
+import com.review.bean.Promocion;
 import com.review.bean.SitioReview;
 import com.review.bean.Usuario;
 import com.review.bean.Video;
@@ -69,6 +70,17 @@ public class ValidarUtils {
 			throw new ReviewException("Para crear el sitio se requiere de un un puntaje maximo.");
 		}
 	}
+	
+	public static void validarPromocion(Promocion promocion) throws ReviewException {
+		if(promocion.getDescripcionPromocion()==null || promocion.getDescripcionPromocion().isBlank()) {
+			throw new ReviewException("Para crear la promocion se requiere indicar una descripcion.");
+		}
+		
+		if(promocion.getTipoPromocion()==null || promocion.getTipoPromocion().toString().isBlank()) {
+			throw new ReviewException("Para crear la promocion se requiere indicar un tipo (cupon, descuento,etc.).");
+		}
+	}
+
 	
 	/**
 	 * Utilidad que controla si un string esta vacio

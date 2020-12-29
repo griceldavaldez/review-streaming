@@ -3,38 +3,40 @@ package com.review.service;
 import java.util.List;
 
 import com.review.bean.Promocion;
+import com.review.bean.TipoPromocion;
+import com.review.exceptions.ReviewException;
 
 public interface PromocionService {
 	/**
-	 * M�todo para crear una promoci�n. Facilitar los atributos de la promoci�n a crear, excepto el idPromocion (que se crea autom�ticamente).
+	 * Mï¿½todo para crear una promociï¿½n. Facilitar los atributos de la promociï¿½n a crear, excepto el idPromocion (que se crea automï¿½ticamente).
 	 * 
 	 * @param Promocion La promocion, indicando los atributos con los cuales crear.
 	 * @return Un numero distinto de cero si la creacion de Promocion se hizo correctamente
 	 */
-	public Integer crearPromocion(Promocion Promocion);
+	public Promocion crearPromocion(Promocion Promocion) throws ReviewException;
 	
 	/**
-	 * M�todo para editar una promoci�n. Facilitar el atributo idPromocion para ubicar la promoci�n a editar, y luego los nuevos valores de los atributos a actualizar.
+	 * Mï¿½todo para editar una promociï¿½n. Facilitar el atributo idPromocion para ubicar la promociï¿½n a editar, y luego los nuevos valores de los atributos a actualizar.
 	 * 
 	 * @param Promocion La promocion, indicando los atributos a modificar.
 	 * @return Un numero distinto de cero si la modificacion de Promocion se hizo correctamente
 	 */
-	public Integer editarPromocion(Promocion Promocion);
+	public Promocion editarPromocion(Promocion Promocion) throws ReviewException;
 	
 	/**
-	 * M�todo para obtener una lista de promociones por ciertos filtros. Si no se indican filtros, se obtienen todas las promociones.
+	 * Mï¿½todo para obtener una lista de promociones por ciertos filtros. Si no se indican filtros, se obtienen todas las promociones.
 	 * 
 	 * @param idPromocion Filtro para indicar que se desean obtener las promociones con este id. Puede ser null.
 	 * @param tipoPromocion Filtro para indicar que se desean obtener las promociones de este tipo. Puede ser null.
 	 * @return Lista de promociones que cumplan con los filtros indicados.
 	 */
-	public List<Promocion> obtenerPromociones(Integer idPromocion, String tipoPromocion);
+	public List<Promocion> obtenerPromociones(Long idPromocion, TipoPromocion tipoPromocion) throws ReviewException;
 	
 	/**
-	 * M�todo para eliminar una promoci�n. Facilitar el atributo idPromocion para ubicar la promoci�n a eliminar.
+	 * Mï¿½todo para eliminar una promociï¿½n. Facilitar el atributo idPromocion para ubicar la promociï¿½n a eliminar.
 	 * 
-	 * @param idPromocion N�mero identificador de la promoci�n.
-	 * @return Un numero distinto de cero si la eliminacion de Promocion se hizo correctamente
+	 * @param idPromocion Numero identificador de la promocion.
+	 * @return nada
 	 */
-	public Integer eliminarPromocion(Integer idPromocion);
+	public void eliminarPromocion(Long idPromocion) throws ReviewException;
 }
