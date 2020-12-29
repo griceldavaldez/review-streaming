@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.review.bean.Video.TipoVideoEnum;
+import com.review.bean.Pelicula;
+import com.review.bean.Serie;
 import com.review.bean.Video;
 import com.review.exceptions.ReviewException;
 import com.review.repository.VideoRepository;
@@ -28,24 +30,60 @@ public class VideoServiceImpl implements VideoService {
 	}
 
 	@Override
-	public Video editarVideo(Video video) throws ReviewException {
+	public Pelicula editarPelicula(Pelicula video) throws ReviewException {
 		if(video.getIdVideo() != null && videoRepository.existsById(video.getIdVideo())) {
+			validarCamposObligatoriosVideo(video);
 			Optional<Video> val = videoRepository.findById(video.getIdVideo());
-			Video videoExistente = val.get();
-			/*Haciendo de esta forma si modifica correctamente el video existente en la BD*/
-			if(! ValidarUtils.isEmptyString(video.getTitulo())) {
-				videoExistente.setTitulo(video.getTitulo());
-			}
-			if(! ValidarUtils.isEmptyString(video.getDescripcion())) {
-				videoExistente.setDescripcion(video.getDescripcion());
-			}
+			Pelicula videoExistente = (Pelicula)val.get();
+			
+			actualizarAtributosComunes(video, videoExistente);
+			
+			videoExistente.setAnhoEstreno(video.getAnhoEstreno());
+			videoExistente.setDirector(video.getDirector());
+			videoExistente.setSaga(video.getSaga());
+			videoExistente.setDuracionMinutos(video.getDuracionMinutos());
+			
 			return videoRepository.save(videoExistente);
 			
 		}else {
-			throw new ReviewException("No se puede editar el video porque no existe en la base de datos");
+			throw new ReviewException("No se puede editar la pelicula porque no existe en la base de datos");
 		}
 	}
 
+	@Override
+	public Serie editarSerie(Serie video) throws ReviewException {
+		if(video.getIdVideo() != null && videoRepository.existsById(video.getIdVideo())) {
+			validarCamposObligatoriosVideo(video);
+			Optional<Video> val = videoRepository.findById(video.getIdVideo());
+			Serie videoExistente = (Serie)val.get();
+			
+			actualizarAtributosComunes(video, videoExistente);
+			
+			videoExistente.setTemporadas(video.getTemporadas());
+			
+			return videoRepository.save(videoExistente);
+			
+		}else {
+			throw new ReviewException("No se puede editar la serie porque no existe en la base de datos");
+		}
+	}
+	
+	private void actualizarAtributosComunes(Video videoParam, Video videoExistente) {
+		videoExistente.setTitulo(videoParam.getTitulo());
+		videoExistente.setDescripcion(videoParam.getDescripcion());
+		videoExistente.setPuntajes(videoParam.getPuntajes());
+		videoExistente.setCategoria(videoParam.getCategoria());
+	}
+
+	private void validarCamposObligatoriosVideo(Video video) throws ReviewException {
+		if(ValidarUtils.isEmptyString(video.getTitulo())) {
+			throw new ReviewException("El video no puede estar sin titulo.");
+		}
+		if(ValidarUtils.isEmptyString(video.getDescripcion())) {
+			throw new ReviewException("El video no puede estar sin descripcion.");
+		}
+	}
+	
 	@Override
 	public List<Video> obtenerVideos(Long idVideo, String titulo, TipoVideoEnum tipoVideo) {
 		Video video = new Video();

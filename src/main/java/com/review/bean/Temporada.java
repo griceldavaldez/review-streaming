@@ -21,7 +21,7 @@ public class Temporada implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idTemporada;
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Episodio> episodios;
 	private int numeroTemporada;
 	private String descripcionTemporada;

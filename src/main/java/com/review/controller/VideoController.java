@@ -66,26 +66,26 @@ public class VideoController {
 	}
 	
 	@RequestMapping(value = "/modify-serie", method = RequestMethod.POST)
-    public Video modifySerie(@RequestBody Serie video) throws ReviewException{
+    public Serie modifySerie(@RequestBody Serie video) throws ReviewException{
 		try {
-			return videoService.editarVideo(video);
+			return videoService.editarSerie(video);
 		}catch (ReviewException e1) {
 			throw e1;
 		} catch (Exception e) {
 			System.out.println(e);
-			throw new ReviewException("Ocurrió un error inesperado al editar video.");
+			throw new ReviewException("Ocurrió un error inesperado al editar serie.");
 		}
 	}
 	
 	@RequestMapping(value = "/modify-pelicula", method = RequestMethod.POST)
-    public Video modifyPelicula(@RequestBody Pelicula video) throws ReviewException{
+    public Pelicula modifyPelicula(@RequestBody Pelicula video) throws ReviewException{
 		try {
-			return videoService.editarVideo(video);
+			return videoService.editarPelicula(video);
 		}catch (ReviewException e1) {
 			throw e1;
 		} catch (Exception e) {
 			System.out.println(e);
-			throw new ReviewException("Ocurrió un error inesperado al editar video.");
+			throw new ReviewException("Ocurrió un error inesperado al editar pelicula.");
 		}
 	}
 	

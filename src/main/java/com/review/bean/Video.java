@@ -33,7 +33,7 @@ public class Video implements Serializable, Ordenable {
 	
 	protected String titulo;
 	protected String descripcion;
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.ALL)
 	protected List<Puntaje> puntajes;
 	@ManyToOne
 	protected Categoria categoria;

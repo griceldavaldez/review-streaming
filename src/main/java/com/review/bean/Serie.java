@@ -17,7 +17,7 @@ public class Serie extends Video implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Temporada> temporadas;
 
 	public Serie() {
