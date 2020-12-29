@@ -3,6 +3,7 @@ package com.review.service;
 import java.util.List;
 
 import com.review.bean.SitioReview;
+import com.review.exceptions.ReviewException;
 
 public interface SitioService {
 	/**
@@ -11,7 +12,7 @@ public interface SitioService {
 	 * @param sitioReview
 	 * @return El sitio creado.
 	 */
-	public SitioReview crearSitio(SitioReview sitioReview);
+	public SitioReview crearSitio(SitioReview sitioReview) throws ReviewException;
 	
 	/**
 	 * M�todo para editar un sitio de review. Facilitar el atributo idSitioReview para ubicar el sitio a editar, y luego los nuevos valores de los atributos a actualizar.
@@ -19,7 +20,7 @@ public interface SitioService {
 	 * @param sitioReview
 	 * @return El sitio actualizado.
 	 */
-	public SitioReview editarSitio(SitioReview sitioReview);
+	public SitioReview editarSitio(SitioReview sitioReview) throws ReviewException;
 	
 	/**
 	 * Metodo para obtener una lista de sitios de review por ciertos filtros. Si no se indican filtros, se obtienen todos los sitios.
@@ -35,5 +36,5 @@ public interface SitioService {
 	 * 
 	 * @param sitio Datos del sitio a eliminar.
 	 */
-	public void eliminarSitio(SitioReview sitio);
+	public void eliminarSitio(Long idSitio) throws ReviewException;
 }

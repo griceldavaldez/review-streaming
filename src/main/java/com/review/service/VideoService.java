@@ -3,6 +3,9 @@ package com.review.service;
 import java.util.List;
 
 import com.review.bean.Video;
+import com.review.exceptions.ReviewException;
+import com.review.bean.Categoria;
+import com.review.bean.Video.TipoVideoEnum;
 
 public interface VideoService {
 	/**
@@ -11,7 +14,7 @@ public interface VideoService {
 	 * @param video
 	 * @return El video recientemente creado
 	 */
-	public Video crearVideo(Video video);
+	public Video crearVideo(Video video) throws ReviewException;
 	
 	/**
 	 * M�todo para editar un video. Facilitar el atributo idVideo para ubicar el video a editar, y luego los nuevos valores de los atributos a actualizar.
@@ -19,7 +22,7 @@ public interface VideoService {
 	 * @param video El video indicando los atributos a modificar.
 	 * @return Un numero distinto de cero si la modificacion de Video se hizo correctamente
 	 */
-	public Integer editarVideo(Video video);
+	public Video editarVideo(Video video) throws ReviewException;
 	
 	/**
 	 * M�todo para obtener una lista de videos por ciertos filtros. Si no se indican filtros, se obtienen todos los videos.
@@ -32,9 +35,8 @@ public interface VideoService {
 	 */
 	//public List<Video> obtenerVideos(Long idVideo, String titulo, Integer idSitioReview, Integer idCategoria);
 	
-	public List<Video> obtenerVideos();
+	public List<Video> obtenerVideos(Long idVideo, String titulo, TipoVideoEnum tipoVideo, Categoria categoria);
 	
-	//public Video obtenerVideoPorId(Long idVideo);
 	
 	/**
 	 * M�todo para eliminar un video. Facilitar el atributo idVideo para ubicar el video a eliminar.
@@ -43,6 +45,6 @@ public interface VideoService {
 	 * @return Un numero distinto de cero si la eliminacion de Video se hizo correctamente
 	 */
 	
-	public Integer eliminarVideo(Integer idVideo);
+	public void eliminarVideo(Long idVideo) throws ReviewException;
 	
 }

@@ -60,7 +60,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 	@Override
 	public void eliminarUsuario(Long idUsuario) throws ReviewException{
-			if(idUsuario != null || usuarioRepository.existsById(idUsuario) ) {
+			if(idUsuario != null && usuarioRepository.existsById(idUsuario) ) {
 				usuarioRepository.deleteById(idUsuario);
 			}else {
 				throw new ReviewException("No se puede eliminar usuario porque no existe en la base de datos");

@@ -6,11 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.review.bean.Categoria;
+import com.review.bean.Pelicula;
 import com.review.bean.Serie;
 import com.review.bean.Video;
+import com.review.bean.Video.TipoVideoEnum;
 import com.review.constants.ApiPaths;
+import com.review.exceptions.ReviewException;
 import com.review.service.VideoService;
 
 @RestController
@@ -25,23 +30,67 @@ public class VideoController {
 	 * @return Lista de videos 
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<Video> list() {
-        return videoService.obtenerVideos();
+    public List<Video> list(@RequestParam(name = "id_video",  required = false) Long idVideo,
+    		@RequestParam(name = "titulo",  required = false) String titulo,
+    		@RequestParam(name = "categoria",  required = false) Categoria categoria,
+    		@RequestParam(name = "tipo_video", required = false) TipoVideoEnum tipoVideo){
+			return videoService.obtenerVideos(idVideo, titulo, tipoVideo, categoria );
     }
 	
 	/**
 	 * Metodo que agrega un nuevo video a la base de datos
 	 */
-	/*@RequestMapping(value = "/add", method = RequestMethod.POST)
-    public void add(@RequestBody Video video) {
-			videoService.crearVideo(video);
-	}*/
+	@RequestMapping(value = "/add-pelicula", method = RequestMethod.POST)
+    public Video addPelicula(@RequestBody Pelicula video) throws ReviewException{
+		try {
+			return videoService.crearVideo(video);
+		}catch (ReviewException e1) {
+			throw e1;
+		} catch (Exception e) {
+			System.out.println(e);
+			throw new ReviewException("Ocurrió un error inesperado al agregar pelicula.");
+		}
+	}
 	
 	/**
 	 * Método que agrega un video tipo serie.
 	 */
 	@RequestMapping(value = "/add/serie", method = RequestMethod.POST)
-    public void addSerie(@RequestBody Serie serie) {
-			videoService.crearVideo(serie);
+    public Video addSerie(@RequestBody Serie serie) throws ReviewException{
+		try {
+			return videoService.crearVideo(serie);
+		}catch (ReviewException e1) {
+			throw e1;
+		} catch (Exception e) {
+			System.out.println(e);
+			throw new ReviewException("Ocurrió un error inesperado al agregar serie.");
+		}	
 	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+    public Video modify(@RequestBody Video video) throws ReviewException{
+		try {
+			return videoService.editarVideo(video);
+		}catch (ReviewException e1) {
+			throw e1;
+		} catch (Exception e) {
+			System.out.println(e);
+			throw new ReviewException("Ocurrió un error inesperado al editar video.");
+		}
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    public void delete(@RequestParam(name = "id_video",  required = true) Long idVideo) throws ReviewException{
+		try {
+			videoService.eliminarVideo(idVideo);
+		}catch (ReviewException e1) {
+			throw e1;
+		} catch (Exception e) {
+			System.out.println(e);
+			throw new ReviewException("Ocurrió un error inesperado al eliminar video.");
+		}
+	}
+	
+	
+	
 }

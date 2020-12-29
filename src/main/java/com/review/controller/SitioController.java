@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.review.bean.SitioReview;
 import com.review.constants.ApiPaths;
+import com.review.exceptions.ReviewException;
 import com.review.service.SitioService;
 
 @RestController
@@ -20,7 +21,7 @@ public class SitioController {
 	private SitioService sitioService;
 	
 	/**
-	 * Método que lista todos los sitios de review.
+	 * Método que lista los sitios de review con los filtros indicados.
 	 * 
 	 * @return Lista de sitios de review.
 	 */
@@ -35,23 +36,44 @@ public class SitioController {
 	 * Método que agrega un nuevo sitio de review.
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-    public SitioReview add(@RequestBody SitioReview sitioReview) {
+    public SitioReview add(@RequestBody SitioReview sitioReview) throws ReviewException {
+		try {
 			return sitioService.crearSitio(sitioReview);
+		} catch (ReviewException e1) {
+			throw e1;
+		} catch (Exception e) {
+			System.out.println(e);
+			throw new ReviewException("Ocurrió un error inesperado al agregar sitio Review.");
+		}
 	}
 	
 	/**
 	 * Método que elimina un sitio de review.
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public void delete(@RequestBody SitioReview sitioReview) {
-			sitioService.eliminarSitio(sitioReview);
+    public void delete(@RequestParam(name = "id_sitio_review",  required = true) Long idSitioReview) throws ReviewException {
+		try {
+			sitioService.eliminarSitio(idSitioReview);
+		}catch (ReviewException e1) {
+			throw e1;
+		} catch (Exception e) {
+			System.out.println(e);
+			throw new ReviewException("Ocurrió un error inesperado al eliminar sitio Review.");
+		}
 	}
 	
 	/**
 	 * Método que edita un sitio de review.
 	 */
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-    public SitioReview modify(@RequestBody SitioReview sitioReview) {
+    public SitioReview modify(@RequestBody SitioReview sitioReview) throws ReviewException {
+		try {
 			return sitioService.editarSitio(sitioReview);
+		}catch (ReviewException e1) {
+			throw e1;
+		} catch (Exception e) {
+			System.out.println(e);
+			throw new ReviewException("Ocurrió un error inesperado al modificar sitio Review.");
+		}
 	}
 }
