@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.review.bean.Promocion;
-import com.review.bean.TipoPromocion;
 import com.review.exceptions.ReviewException;
 import com.review.repository.PromocionRepository;
 import com.review.service.PromocionService;
@@ -34,7 +33,7 @@ public class PromocionServiceImpl implements PromocionService{
 			if(! ValidarUtils.isEmptyString(promocion.getDescripcionPromocion())) {
 				promocionExistente.setDescripcionPromocion(promocion.getDescripcionPromocion());
 			}
-			if(! ValidarUtils.isEmptyString(promocion.getTipoPromocion().toString())) {
+			if(promocion.getTipoPromocion() != null) {
 				promocionExistente.setTipoPromocion(promocion.getTipoPromocion());
 			}
 			return promocionRepository.save(promocionExistente);
@@ -43,10 +42,11 @@ public class PromocionServiceImpl implements PromocionService{
 		}
 	}
 	
-	public List<Promocion> obtenerPromociones(Long idPromocion, TipoPromocion tipoPromocion) throws ReviewException{
+	public List<Promocion> obtenerPromociones(Long idPromocion, String tipoPromocion, String descripcionPromocion) throws ReviewException{
 		Promocion promocion=new Promocion();
 		promocion.setIdPromocion(idPromocion);
 		promocion.setTipoPromocion(tipoPromocion);
+		promocion.setDescripcionPromocion(descripcionPromocion);
 		return ListarUtils.listar(promocion, promocionRepository);
 	}
 	

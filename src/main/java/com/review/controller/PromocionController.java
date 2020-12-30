@@ -7,28 +7,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.review.bean.Promocion;
-import com.review.bean.TipoPromocion;
+import com.review.constants.ApiPaths;
 import com.review.exceptions.ReviewException;
 import com.review.service.PromocionService;
 
+@RestController
+@RequestMapping(ApiPaths.PROMOCION)
 public class PromocionController {
 	@Autowired
 	private PromocionService promocionService;
 	
 	/**
-	 * MÃ©todo que lista todas las promociones.
+	 * Metodo que lista todas las promociones.
 	 * 
 	 * @return Lista de promociones.
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Promocion> list(
     		@RequestParam(name = "id_promocion",  required = false) Long idPromocion,
-    		@RequestParam(name = "tipo_promocion",  required = false) TipoPromocion tipoPromocion,
+    		@RequestParam(name = "tipo_promocion",  required = false) String tipoPromocion,
     		@RequestParam(name = "descripcion_promocion",  required = false) String descripcionPromocion) throws ReviewException{
         try {
-			return promocionService.obtenerPromociones(idPromocion,tipoPromocion);
+			return promocionService.obtenerPromociones(idPromocion,tipoPromocion, descripcionPromocion);
         } catch (ReviewException e1) {
 			throw e1;
         } catch (Exception e) {
@@ -38,7 +41,7 @@ public class PromocionController {
     }
 	
 	/**
-	 * MÃ©todo que agrega una nueva promocion.
+	 * Metodo que agrega una nueva promocion.
 	 * @throws ReviewException 
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -49,28 +52,28 @@ public class PromocionController {
 				throw e1;
 			} catch (Exception e) {
 				System.out.println(e);
-				throw new ReviewException("OcurriÃ³ un error inesperado al agregar promocion.");
+				throw new ReviewException("Ocurrio un error inesperado al agregar promocion.");
 			}
 	}
 	
 	/**
-	 * MÃ©todo que elimina una categorÃ­a.
+	 * Metodo que elimina una promocion
 	 * @throws ReviewException 
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public void delete(@RequestBody Promocion promocion) throws ReviewException {
+    public void delete(@RequestParam(name = "id_promocion",  required = true) Long idPromocion) throws ReviewException {
 			try {
-				promocionService.eliminarPromocion(promocion.getIdPromocion());
+				promocionService.eliminarPromocion(idPromocion);
 	        } catch (ReviewException e1) {
 				throw e1;
 			} catch (Exception e) {
 				System.out.println(e);
-				throw new ReviewException("OcurriÃ³ un error inesperado al eliminar categoria.");
+				throw new ReviewException("Ocurrio un error inesperado al eliminar promocion.");
 			}
 	}
 	
 	/**
-	 * MÃ©todo que edita una promocion.
+	 * Metodo que edita una promocion.
 	 * @throws ReviewException 
 	 */
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)

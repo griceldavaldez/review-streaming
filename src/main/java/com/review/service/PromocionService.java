@@ -3,7 +3,6 @@ package com.review.service;
 import java.util.List;
 
 import com.review.bean.Promocion;
-import com.review.bean.TipoPromocion;
 import com.review.exceptions.ReviewException;
 
 public interface PromocionService {
@@ -30,7 +29,7 @@ public interface PromocionService {
 	 * @param tipoPromocion Filtro para indicar que se desean obtener las promociones de este tipo. Puede ser null.
 	 * @return Lista de promociones que cumplan con los filtros indicados.
 	 */
-	public List<Promocion> obtenerPromociones(Long idPromocion, TipoPromocion tipoPromocion) throws ReviewException;
+	public List<Promocion> obtenerPromociones(Long idPromocion, String tipoPromocion, String descripcionPromocion) throws ReviewException;
 	
 	/**
 	 * Mï¿½todo para eliminar una promociï¿½n. Facilitar el atributo idPromocion para ubicar la promociï¿½n a eliminar.

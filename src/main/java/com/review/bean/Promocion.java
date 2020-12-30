@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Promocion implements Serializable{
@@ -24,8 +23,9 @@ public class Promocion implements Serializable{
 	/**
 	 * por ejemplo CUPON, DESCUENTO, ACCESO_PRE_ESTRENO
 	 */
-	@ManyToOne
-	private TipoPromocion tipoPromocion;
+	
+	private String tipoPromocion;
+	
 	private String descripcionPromocion;
 	
 
@@ -42,13 +42,13 @@ public class Promocion implements Serializable{
 
 
 
-	public TipoPromocion getTipoPromocion() {
+	public String getTipoPromocion() {
 		return tipoPromocion;
 	}
 
 
 
-	public void setTipoPromocion(TipoPromocion tipoPromocion) {
+	public void setTipoPromocion(String tipoPromocion) {
 		this.tipoPromocion = tipoPromocion;
 	}
 
