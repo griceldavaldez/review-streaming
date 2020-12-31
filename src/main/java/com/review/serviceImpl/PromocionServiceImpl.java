@@ -21,15 +21,15 @@ public class PromocionServiceImpl implements PromocionService{
 	
 	@Override
 	public Promocion crearPromocion(Promocion promocion) throws ReviewException{
-		ValidarUtils.validarPromocion(promocion);
+		ValidarUtils.validarCreacionPromocion(promocion);
 		return promocionRepository.save(promocion);
 	}
 	
 	@Override
 	public Promocion editarPromocion(Promocion promocion) throws ReviewException{
 		if(promocion.getIdPromocion() != null && promocionRepository.existsById(promocion.getIdPromocion())){
-			Optional<Promocion> val = promocionRepository.findById(promocion.getIdPromocion());
-			Promocion promocionExistente = val.get();
+			Optional<Promocion> recuperarPromocion = promocionRepository.findById(promocion.getIdPromocion());
+			Promocion promocionExistente = recuperarPromocion.get();
 			if(! ValidarUtils.isEmptyString(promocion.getDescripcionPromocion())) {
 				promocionExistente.setDescripcionPromocion(promocion.getDescripcionPromocion());
 			}
@@ -43,18 +43,18 @@ public class PromocionServiceImpl implements PromocionService{
 	}
 	
 	public List<Promocion> obtenerPromociones(Long idPromocion, String tipoPromocion, String descripcionPromocion) throws ReviewException{
-		Promocion promocion=new Promocion();
-		promocion.setIdPromocion(idPromocion);
-		promocion.setTipoPromocion(tipoPromocion);
-		promocion.setDescripcionPromocion(descripcionPromocion);
-		return ListarUtils.listar(promocion, promocionRepository);
+		Promocion filtroPromocion=new Promocion();
+		filtroPromocion.setIdPromocion(idPromocion);
+		filtroPromocion.setTipoPromocion(tipoPromocion);
+		filtroPromocion.setDescripcionPromocion(descripcionPromocion);
+		return ListarUtils.listar(filtroPromocion, promocionRepository);
 	}
 	
 	public void eliminarPromocion(Long idPromocion) throws ReviewException{
 		if(idPromocion != null && promocionRepository.existsById(idPromocion)) {
 			promocionRepository.deleteById(idPromocion);
 		}else {
-			throw new ReviewException("No se puede eliminar la promocion porque no esta en la base de datos");
+			throw new ReviewException("No se puede eliminar la promocion porque no existe en la base de datos");
 		}
 	}
 }

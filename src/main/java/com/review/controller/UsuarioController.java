@@ -51,9 +51,9 @@ public class UsuarioController {
 	 * @throws ReviewException 
 	 */
 	@RequestMapping(value = "/add-administrador", method = RequestMethod.POST)
-    public Usuario addAdministrador(@RequestBody Administrador usuario) throws ReviewException {
+    public Administrador addAdministrador(@RequestBody Administrador administrador) throws ReviewException {
 			try {
-				return usuarioService.crearUsuario(usuario);
+				return usuarioService.crearAdministrador(administrador);
 			} catch (ReviewException e1) {
 				throw e1;
 			} catch (Exception e) {
@@ -62,9 +62,9 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value = "/add-espectador", method = RequestMethod.POST)
-    public Usuario addEspectador(@RequestBody Espectador usuario) throws ReviewException {
+    public Espectador addEspectador(@RequestBody Espectador espectador) throws ReviewException {
 			try {
-				return usuarioService.crearUsuario(usuario);
+				return usuarioService.crearEspectador(espectador);
 			} catch (ReviewException e1) {
 				throw e1;
 			} catch (Exception e) {
@@ -73,9 +73,9 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value = "/add-curador", method = RequestMethod.POST)
-    public Usuario addCurador(@RequestBody CuradorDeContenido usuario) throws ReviewException {
+    public CuradorDeContenido addCurador(@RequestBody CuradorDeContenido curador) throws ReviewException {
 			try {
-				return usuarioService.crearUsuario(usuario);
+				return  usuarioService.crearCurador(curador);
 			} catch (ReviewException e1) {
 				throw e1;
 			} catch (Exception e) {

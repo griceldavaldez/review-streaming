@@ -35,6 +35,6 @@ public interface CategoriaService {
 	 * @param categoria Datos de la categoría a eliminar.
 	 * @throws ReviewException
 	 */
-	public void eliminarCategoria(Categoria categoria) throws ReviewException;
+	public void eliminarCategoria(Long idCategoria) throws ReviewException;
 
 }

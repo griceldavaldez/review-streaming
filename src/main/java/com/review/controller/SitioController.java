@@ -50,7 +50,7 @@ public class SitioController {
 	/**
 	 * Método que elimina un sitio de review.
 	 */
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public void delete(@RequestParam(name = "id_sitio_review",  required = true) Long idSitioReview) throws ReviewException {
 		try {
 			sitioService.eliminarSitio(idSitioReview);

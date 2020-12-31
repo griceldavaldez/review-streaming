@@ -1,6 +1,7 @@
 package com.review.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,13 +29,16 @@ public class SitioServiceImpl implements SitioService {
 	@Override
 	public SitioReview editarSitio(SitioReview sitio) throws ReviewException{
 		if(sitio.getIdSitioReview() != null && sitioRepository.existsById(sitio.getIdSitioReview())){
-			Boolean hayNombre = ValidarUtils.isEmptyString(sitio.getNombre());
-			Boolean hayPuntaje = sitio.getPuntajeMaximo() != null && sitio.getPuntajeMaximo().compareTo((double) 0) != 0;
-			if(hayNombre || hayPuntaje) {
-				return sitioRepository.save(sitio);
-			}else {
-				throw new ReviewException("No se puede editar sitio porque los campos son nulos.");
+			Optional<SitioReview> recuperarSitio = sitioRepository.findById(sitio.getIdSitioReview());
+			SitioReview sitioExistente = recuperarSitio.get();
+			if(! ValidarUtils.isEmptyString(sitio.getNombre())) {
+				sitioExistente.setNombre(sitio.getNombre());
 			}
+			if(sitio.getPuntajeMaximo() != null ) {
+				sitioExistente.setPuntajeMaximo(sitio.getPuntajeMaximo());
+			}
+			return sitioRepository.save(sitioExistente);
+			
 		}else {
 			throw new ReviewException("No se puede editar sitio porque no existe en la base de datos");
 		}

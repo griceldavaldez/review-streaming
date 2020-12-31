@@ -24,21 +24,23 @@ public class CategoriaServiceImpl implements CategoriaService {
 		Boolean hayDescripcionCategoria = categoria.getDescripcionCategoria() != null && !categoria.getDescripcionCategoria().isEmpty();
 		if(hayDescripcionCategoria) {
 			return categoriaRepository.save(categoria);
+		}else {
+			throw new ReviewException("No se puede crear una categoria sin indicar su descripcion");
 		}
-		throw new ReviewException("No se puede crear una categoria sin indicar su descripcion");
 	}
 
 	@Override
-	public Categoria editarCategoria(Categoria categoria) {
-		/* Primero comprobamos si existe la categoria a editar y 
-		luego controlamos si la instanacia si la instancia tiene un campo a modificar*/
-		if(categoriaRepository.existsById(categoria.getIdCategoria())) {
-			Boolean hayDescripcionCategoria = categoria.getDescripcionCategoria()  != null && !categoria.getDescripcionCategoria().isEmpty();
-			if (hayDescripcionCategoria) {
-				return categoriaRepository.save(categoria);
+	public Categoria editarCategoria(Categoria categoria) throws ReviewException {
+		if(categoria.getIdCategoria() != null && categoriaRepository.existsById(categoria.getIdCategoria())) {
+			java.util.Optional <Categoria> recuperarCategoria = categoriaRepository.findById(categoria.getIdCategoria());
+			Categoria categoriaExistente = recuperarCategoria.get();
+			if (categoria.getDescripcionCategoria()  != null) {
+				categoriaExistente.setDescripcionCategoria(categoria.getDescripcionCategoria());
 			}
+			return categoriaRepository.save(categoriaExistente);
+		}else {
+			throw new ReviewException("No se puede editar la categoria porque no existe en la base de datos.");
 		}
-		return null;
 	}
 
 	@Override
@@ -46,19 +48,23 @@ public class CategoriaServiceImpl implements CategoriaService {
 		Boolean hayIdCategoria = idCategoria != null && idCategoria.compareTo((long) 0) != 0;
 		Boolean hayDescripcionCategoria = descripcionCategoria != null && !descripcionCategoria.isEmpty();
 		
-		Categoria c = new Categoria();
+		Categoria filtroCategoria = new Categoria();
 		if(hayIdCategoria) {
-			c.setIdCategoria(idCategoria);
+			filtroCategoria.setIdCategoria(idCategoria);
 		}
 		if(hayDescripcionCategoria) {
-			c.setDescripcionCategoria(descripcionCategoria);
+			filtroCategoria.setDescripcionCategoria(descripcionCategoria);
 		}
-		return ListarUtils.listar(c, categoriaRepository);
+		return ListarUtils.listar(filtroCategoria, categoriaRepository);
 	}
 
 	@Override
-	public void eliminarCategoria(Categoria categoria) {
-		categoriaRepository.delete(categoria);
+	public void eliminarCategoria(Long idCategoria) throws ReviewException{
+		if(idCategoria != null && categoriaRepository.existsById(idCategoria)) {
+			categoriaRepository.deleteById(idCategoria);
+		}else {
+			throw new ReviewException("No se puede eliminar categoria porque no existe en la base de datos.");
+		}
 	}
 
 }

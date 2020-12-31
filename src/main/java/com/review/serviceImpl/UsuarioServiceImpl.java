@@ -28,26 +28,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	@Override
-	public Usuario crearUsuario(Usuario usuario) throws ReviewException {
-		ValidarUtils.validarCreacionUsuario(usuario);
-		usuario.setEstado(EstadoEnum.ACTIVO);
-		usuario.setFechaRegistro(new Date());
-		usuario.setFechaVencimiento(DateUtils.sumarDiasDate(usuario.getFechaRegistro(), Constantes.DIAS_VENCIMIENTO));
-		/*Agregamos este bloque de condigo para asegurarnos de que si recibe una instancia de Espectador
-		 no pueda setear los atributos isPremium y Lista de promociones, ya que esto solo corresponde
-		 a un Espectador Premium y para tener derecho a estos campos debe el Espectador debe convertirse a premium necesariamente*/
-		if(TipoUsuarioEnum.ESPECTADOR.equals(usuario.getTipoUsuario())) {
-			Espectador espectador = (Espectador)  usuario;
-			if(espectador.getPromociones() != null || espectador.getIsPremium() != false) {
-				espectador.setPromociones(null);
-				espectador.setIsPremium(false);
-				return usuarioRepository.save(espectador);
-			}
-		}
-		return usuarioRepository.save(usuario);
-
-	}
 
 	private void actualizarAtributosComunes(Usuario usuario, Usuario usuarioExistente) {
 		if(! ValidarUtils.isEmptyString(usuario.getNombre())) {
@@ -153,8 +133,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 			Optional<Usuario> recuperarUsuario = usuarioRepository.findById(curador.getIdUsuario());
 			CuradorDeContenido curadorExistente = (CuradorDeContenido) recuperarUsuario.get();
 			actualizarAtributosComunes(curador, curadorExistente);
-			if(curador.getCatergoriasAModerar() != null || ! curador.getCatergoriasAModerar().isEmpty()) {
-				curadorExistente.setCatergoriasAModerar(curador.getCatergoriasAModerar());
+			if(curador.getCategoriasAModerar() != null || ! curador.getCategoriasAModerar().isEmpty()) {
+				curadorExistente.setCategoriasAModerar(curador.getCategoriasAModerar());
 			}
 			return usuarioRepository.save(curadorExistente);
 		}else {
@@ -169,7 +149,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 			Optional<Usuario> recuperarUsuario = usuarioRepository.findById(espectador.getIdUsuario());
 			Espectador espectadorExistente = (Espectador) recuperarUsuario.get();
 			actualizarAtributosComunes(espectador, espectadorExistente);
-			if(espectadorExistente.getIsPremium()) {
+			if(espectadorExistente.getIsPremium() && espectador.getPromociones()!= null) {
 				espectadorExistente.setPromociones (espectador.getPromociones());
 			}
 			return usuarioRepository.save(espectadorExistente);
@@ -178,6 +158,40 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 		
 	
+	}
+
+	@Override
+	public Administrador crearAdministrador(Administrador administrador) throws ReviewException {
+		ValidarUtils.validarCreacionUsuario(administrador);
+		administrador.setEstado(EstadoEnum.ACTIVO);
+		administrador.setFechaRegistro(new Date());
+		administrador.setFechaVencimiento(DateUtils.sumarDiasDate(administrador.getFechaRegistro(), Constantes.DIAS_VENCIMIENTO));
+		return usuarioRepository.save(administrador);
+	}
+
+	@Override
+	public Espectador crearEspectador(Espectador espectador) throws ReviewException {
+		ValidarUtils.validarCreacionUsuario(espectador);
+		espectador.setEstado(EstadoEnum.ACTIVO);
+		espectador.setFechaRegistro(new Date());
+		espectador.setFechaVencimiento(DateUtils.sumarDiasDate(espectador.getFechaRegistro(), Constantes.DIAS_VENCIMIENTO));
+		/*Agregamos este bloque de condigo para asegurarnos de que si recibe una instancia de Espectador
+		 no pueda setear los atributos isPremium y Lista de promociones, ya que esto solo corresponde
+		 a un Espectador Premium y para tener derecho a estos campos debe el Espectador debe convertirse a premium necesariamente*/
+		if(espectador.getPromociones() != null || espectador.getIsPremium() != false) {
+			espectador.setPromociones(null);
+			espectador.setIsPremium(false);
+		}
+		return usuarioRepository.save(espectador);
+	}
+
+	@Override
+	public CuradorDeContenido crearCurador(CuradorDeContenido curador) throws ReviewException {
+		ValidarUtils.validarCreacionUsuario(curador);
+		curador.setEstado(EstadoEnum.ACTIVO);
+		curador.setFechaRegistro(new Date());
+		curador.setFechaVencimiento(DateUtils.sumarDiasDate(curador.getFechaRegistro(), Constantes.DIAS_VENCIMIENTO));
+		return usuarioRepository.save(curador);
 	}
 	
 }

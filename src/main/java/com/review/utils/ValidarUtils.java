@@ -74,12 +74,12 @@ public class ValidarUtils {
 		}
 	}
 	
-	public static void validarPromocion(Promocion promocion) throws ReviewException {
-		if(promocion.getDescripcionPromocion()==null || promocion.getDescripcionPromocion().isBlank()) {
+	public static void validarCreacionPromocion(Promocion promocion) throws ReviewException {
+		if(isEmptyString(promocion.getDescripcionPromocion())) {
 			throw new ReviewException("Para crear la promocion se requiere indicar una descripcion.");
 		}
 		
-		if(promocion.getTipoPromocion()==null || promocion.getTipoPromocion().toString().isBlank()) {
+		if(isEmptyString(promocion.getTipoPromocion())) {
 			throw new ReviewException("Para crear la promocion se requiere indicar un tipo (cupon, descuento,etc.).");
 		}
 	}

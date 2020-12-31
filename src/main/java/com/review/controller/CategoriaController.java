@@ -60,9 +60,9 @@ public class CategoriaController {
 	 * @throws ReviewException 
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public void delete(@RequestBody Categoria categoria) throws ReviewException {
+    public void delete(@RequestParam (name = "id_categoria",  required = true) Long idCategoria) throws ReviewException {
 			try {
-				categoriaService.eliminarCategoria(categoria);
+				categoriaService.eliminarCategoria(idCategoria);
 			} catch (ReviewException e1) {
 				throw e1;
 			} catch (Exception e) {

@@ -20,8 +20,9 @@ public interface UsuarioService {
 	 * @throws ReviewException 
 	 */
 	
-	public Usuario crearUsuario(Usuario usuario) throws ReviewException;
-	
+	public Administrador crearAdministrador(Administrador administrador) throws ReviewException;
+	public Espectador crearEspectador(Espectador espectador) throws ReviewException;
+	public CuradorDeContenido crearCurador(CuradorDeContenido curador) throws ReviewException;
 	
 	/**
 	 * Metodo para editar un usuario. Facilitar el atributo idUsuario para ubicar el usuario a editar, y luego los nuevos valores de los atributos a actualizar.
