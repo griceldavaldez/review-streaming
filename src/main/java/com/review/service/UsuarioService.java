@@ -2,6 +2,9 @@ package com.review.service;
 
 import java.util.List;
 
+import com.review.bean.Administrador;
+import com.review.bean.CuradorDeContenido;
+import com.review.bean.Espectador;
 import com.review.bean.Usuario;
 import com.review.bean.Usuario.EstadoEnum;
 import com.review.bean.Usuario.TipoUsuarioEnum;
@@ -27,7 +30,13 @@ public interface UsuarioService {
 	 * @return Usuario modificado
 	 */
 	
-	public Usuario editarUsuario(Usuario usuario) throws ReviewException;
+	public Administrador editarAdministrador(Administrador administrador) throws ReviewException;
+	
+	
+	public CuradorDeContenido editarCurador(CuradorDeContenido curador) throws ReviewException;
+	
+	
+	public Espectador editarEspectador(Espectador espectador) throws ReviewException;
 	
 	
 	/**

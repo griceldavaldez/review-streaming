@@ -93,9 +93,7 @@ public class UsuarioController {
 				throw new ReviewException("Ocurrió un error inesperado al convertir a premium.");
 			}
 	}
-	
-	
-	
+
 	
 	/**
 	 * Método que elimina un usuario
@@ -115,16 +113,39 @@ public class UsuarioController {
 	/**
 	 * Método que edita un usuario
 	 */
-	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-    public Usuario modify(@RequestBody Usuario usuario) throws ReviewException{
+	@RequestMapping(value = "/modify-administrador", method = RequestMethod.POST)
+    public Administrador modifyAdministrador(@RequestBody Administrador administrador) throws ReviewException{
 		try {
-			return  usuarioService.editarUsuario(usuario);
+			return  usuarioService.editarAdministrador(administrador);
 		}catch (ReviewException e1) {
 			throw e1;
 		}catch (Exception e) {
 			throw e;
 		}
 	}
+	
+	@RequestMapping(value = "/modify-espectador", method = RequestMethod.POST)
+    public Espectador modifyEspectador(@RequestBody Espectador espectador) throws ReviewException{
+		try {
+			return  usuarioService.editarEspectador(espectador);
+		}catch (ReviewException e1) {
+			throw e1;
+		}catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	@RequestMapping(value = "/modify-curador", method = RequestMethod.POST)
+    public CuradorDeContenido modifyCurador(@RequestBody CuradorDeContenido curador) throws ReviewException{
+		try {
+			return  usuarioService.editarCurador(curador);
+		}catch (ReviewException e1) {
+			throw e1;
+		}catch (Exception e) {
+			throw e;
+		}
+	}
+	
 	
 	/**
 	 * Notificar vencimiento a usuarios

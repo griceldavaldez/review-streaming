@@ -3,6 +3,7 @@ package com.review.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -17,7 +18,7 @@ public class CuradorDeContenido extends Usuario implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Categoria> catergoriasAModerar;
 	
 	public CuradorDeContenido() {

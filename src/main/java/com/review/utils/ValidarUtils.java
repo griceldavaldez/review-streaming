@@ -42,14 +42,17 @@ public class ValidarUtils {
 	 */
 	public static void validarCreacionUsuario(Usuario usuario) throws ReviewException {
 		if(isEmptyString(usuario.getNombre())) {
+			System.out.println("No hay nombre");
 			throw new ReviewException("Para crear el usuario se requiere de un nombre.");
 		}
 		
 		if(isEmptyString(usuario.getContrasenha()) ) {
+			System.out.println("No hay contrasenha");
 			throw new ReviewException("Para crear el usuario se requiere de una contrasenha.");
 		}
 		
 		if(isEmptyString(usuario.getEmail())) {
+			System.out.println("No hay email");
 			throw new ReviewException("Para crear el usuario se requiere de un email.");
 		}
 	}
