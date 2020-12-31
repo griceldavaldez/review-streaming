@@ -169,7 +169,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 			Optional<Usuario> recuperarUsuario = usuarioRepository.findById(espectador.getIdUsuario());
 			Espectador espectadorExistente = (Espectador) recuperarUsuario.get();
 			actualizarAtributosComunes(espectador, espectadorExistente);
-			if(espectador.getIsPremium()) {
+			if(espectadorExistente.getIsPremium()) {
 				espectadorExistente.setPromociones (espectador.getPromociones());
 			}
 			return usuarioRepository.save(espectadorExistente);

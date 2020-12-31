@@ -56,18 +56,18 @@ public class VideoServiceImpl implements VideoService {
 	}
 
 	@Override
-	public Serie editarSerie(Serie video) throws ReviewException {
-		if(video.getIdVideo() != null && videoRepository.existsById(video.getIdVideo())) {
-			Optional<Video> val = videoRepository.findById(video.getIdVideo());
-			Serie videoExistente = (Serie)val.get();
+	public Serie editarSerie(Serie serie) throws ReviewException {
+		if(serie.getIdVideo() != null && videoRepository.existsById(serie.getIdVideo())) {
+			Optional<Video> recuperarVideo = videoRepository.findById(serie.getIdVideo());
+			Serie serieExistente = (Serie) recuperarVideo.get();
 			
-			actualizarAtributosComunes(video, videoExistente);
+			actualizarAtributosComunes(serie, serieExistente);
 			
-			if(video.getTemporadas() != null  ) {
-				videoExistente.setTemporadas(video.getTemporadas());
+			if(serie.getTemporadas() != null  ) {
+				serieExistente.setTemporadas(serie.getTemporadas());
 			}
 			
-			return videoRepository.save(videoExistente);
+			return videoRepository.save(serieExistente);
 			
 		}else {
 			throw new ReviewException("No se puede editar la serie porque no existe en la base de datos");
