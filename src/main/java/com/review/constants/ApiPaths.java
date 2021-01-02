@@ -1,5 +1,11 @@
 package com.review.constants;
 
+
+/*
+ *  En esta clase se especifican las constantes 
+ *  mas utilizadas en la API REST
+ */
+
 public class ApiPaths {
 
 	private static final String BASE_API = "/api/lp3";

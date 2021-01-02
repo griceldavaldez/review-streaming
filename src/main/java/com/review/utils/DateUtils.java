@@ -3,6 +3,10 @@ package com.review.utils;
 import java.util.Calendar;
 import java.util.Date;
 
+/*
+ * Utilidad para manejar las fechas 
+ */
+
 public final class DateUtils {
 	
 	/**

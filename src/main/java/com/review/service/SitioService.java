@@ -15,7 +15,7 @@ public interface SitioService {
 	public SitioReview crearSitio(SitioReview sitioReview) throws ReviewException;
 	
 	/**
-	 * M�todo para editar un sitio de review. Facilitar el atributo idSitioReview para ubicar el sitio a editar, y luego los nuevos valores de los atributos a actualizar.
+	 * Metodo para editar un sitio de review. Facilitar el atributo idSitioReview para ubicar el sitio a editar, y luego los nuevos valores de los atributos a actualizar.
 	 * 
 	 * @param sitioReview
 	 * @return El sitio actualizado.
@@ -32,7 +32,7 @@ public interface SitioService {
 	public List<SitioReview> obtenerSitios(Long idSitioReview, String nombre);
 	
 	/**
-	 * M�todo para eliminar un sitio de review. Facilitar el atributo idSitioReview para ubicar el sitio a eliminar.
+	 * Metodo para eliminar un sitio de review. Facilitar el atributo idSitioReview para ubicar el sitio a eliminar.
 	 * 
 	 * @param sitio Datos del sitio a eliminar.
 	 */

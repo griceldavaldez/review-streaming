@@ -22,7 +22,6 @@ public class PromocionController {
 	
 	/**
 	 * Metodo que lista todas las promociones.
-	 * 
 	 * @return Lista de promociones.
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

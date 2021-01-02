@@ -18,7 +18,7 @@ public interface VideoService {
 	public Video crearVideo(Video video) throws ReviewException;
 	
 	/**
-	 * M�todo para obtener una lista de videos por ciertos filtros. Si no se indican filtros, se obtienen todos los videos.
+	 * Metodo para obtener una lista de videos por ciertos filtros. Si no se indican filtros, se obtienen todos los videos.
 	 * 
 	 * @param idVideo Filtro para indicar que se desean obtener los videos con este id. Puede ser null.
 	 * @param titulo Filtro para indicar que se desean obtener los videos con este titulo (o que contenga). Puede ser null.
@@ -32,7 +32,7 @@ public interface VideoService {
 	
 	
 	/**
-	 * M�todo para eliminar un video. Facilitar el atributo idVideo para ubicar el video a eliminar.
+	 * Metodo para eliminar un video. Facilitar el atributo idVideo para ubicar el video a eliminar.
 	 * 
 	 * @param idVideo N�mero identificador del video.
 	 * @return Un numero distinto de cero si la eliminacion de Video se hizo correctamente

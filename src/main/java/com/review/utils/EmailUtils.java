@@ -6,7 +6,7 @@ import com.review.utils.interfaces.Notificable;
 public final class EmailUtils {
  	
   	/**
-  	 * Utilidad que notifica vencimiento de credencial a trav�s de un correo electr�nico
+  	 * Utilidad que notifica vencimiento de credencial a traves de un correo electronico
   	 * 
   	 * @param notificable Instancia de un notificable
   	 */
@@ -22,7 +22,7 @@ public final class EmailUtils {
   	}
   	
   	/**
-  	 * Utilidad que envia un correo, simula el env�o con una impresi�n
+  	 * Utilidad que envia un correo, simula el envio con una impresion en consola
   	 * 
   	 * @param email Direccion de correo 
   	 * @param asunto Motivo del mensaje

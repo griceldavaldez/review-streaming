@@ -13,6 +13,11 @@ import com.review.service.PromocionService;
 import com.review.utils.ListarUtils;
 import com.review.utils.ValidarUtils;
 
+/*
+ *Clase que implementa los metodos de la interfaz de PromocionService
+ *
+ */
+
 @Service
 public class PromocionServiceImpl implements PromocionService{
 

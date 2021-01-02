@@ -1,12 +1,15 @@
 package com.review.repository;
 
 import java.util.List;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import com.review.bean.Usuario;
+
+/*
+ * Interfaz para almacenar y recuperar los datos de usuarios
+ */
 
 @Repository
 public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, Long> , QueryByExampleExecutor<Usuario> {

@@ -22,7 +22,6 @@ public class CategoriaController {
 	
 	/**
 	 * Método que lista todas las categorías.
-	 * 
 	 * @return Lista de categorias.
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

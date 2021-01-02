@@ -12,6 +12,11 @@ import com.review.service.CategoriaService;
 import com.review.utils.ListarUtils;
 
 
+/*
+ *Clase que implementa los metodos de la interfaz de CategoriaService
+ *
+ */
+
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
 

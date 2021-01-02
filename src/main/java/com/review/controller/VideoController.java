@@ -25,7 +25,6 @@ public class VideoController {
 	
 	/**
 	 * Metodo que lista todos los videos de la base de datos
-	 * 
 	 * @return Lista de videos 
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

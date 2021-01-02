@@ -2,12 +2,14 @@ package com.review.exceptions;
 
 import java.io.Serializable;
 
+/*
+ * Excepcion utilizada  por los servicios para indicar
+ * problemas
+ * 
+ */
 
 public class ReviewException extends Exception implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private String mensaje;

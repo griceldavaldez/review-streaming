@@ -22,7 +22,6 @@ public class SitioController {
 	
 	/**
 	 * Método que lista los sitios de review con los filtros indicados.
-	 * 
 	 * @return Lista de sitios de review.
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

@@ -28,7 +28,6 @@ public class UsuarioController {
 	
 	/**
 	 * Método que lista todos los usuarios segun los filtros indicados
-	 * 
 	 * @return Lista de usuarios encontrados
 	 */
 	
