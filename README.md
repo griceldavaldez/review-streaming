@@ -33,7 +33,7 @@ Request de tipo POST. Se agrega video/modify-serie a la direccion principal. Se 
 -Renovar credencial:
 -
 Request de tipo POST. Se agrega usuario/renovar-credencial. Utiliza el idUsuario para 
-filtrar.
+filtrar en la pestaña "Query" del Insomnia.
 
 -Notificar vencimiento:
 -
