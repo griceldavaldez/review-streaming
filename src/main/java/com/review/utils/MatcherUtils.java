@@ -9,6 +9,8 @@ import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 public class MatcherUtils {
 
 	/**
+	 * Método que devuelve una instancia del ExampleMatcher
+	 * 
 	 * @param containing Indica cuál es el método de comparación de cada valor de matchs.
 	 * @param matchs Cada uno de los atributos que son tipo string y que se desea sea un filtro a tener en cuenta en la búsqueda.
 	 * @return Un ExampleMatcher.

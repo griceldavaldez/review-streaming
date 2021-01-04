@@ -1,6 +1,6 @@
 package com.review.utils.interfaces;
 
-/*
+/**
  * Interfaz utilizada por elementos que se pueden ordenar 
  */
 

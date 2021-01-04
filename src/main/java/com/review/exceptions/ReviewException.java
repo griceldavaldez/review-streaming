@@ -2,7 +2,7 @@ package com.review.exceptions;
 
 import java.io.Serializable;
 
-/*
+/**
  * Excepcion utilizada  por los servicios para indicar
  * problemas
  * 

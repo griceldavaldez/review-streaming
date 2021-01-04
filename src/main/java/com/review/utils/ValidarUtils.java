@@ -15,9 +15,7 @@ public class ValidarUtils {
 	 * @throws ReviewException 
 	 */
 	public static void validarCreacionVideo(Video val) throws ReviewException {
-		/*se verifica si alguno de los campos esta incompleto para avisar que faltan datos, 
-		 en caso de ser asi retorna falso, de lo contrario retorna verdadero, lo que significa
-		 que minimamente esos campos fueron completados*/
+		
 		if(isEmptyString(val.getTitulo())) {
 			System.out.println("No hay titulo");
 			throw new ReviewException("Para crear el video se requiere de un título.");

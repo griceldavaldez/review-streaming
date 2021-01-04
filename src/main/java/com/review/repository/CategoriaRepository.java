@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.review.bean.Categoria;
 
-/*
+/**
  * Interfaz para almacenar y recuperar los datos de categorias 
  */
 

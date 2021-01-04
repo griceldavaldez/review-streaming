@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = {"com.review.repository"})
 @EntityScan(basePackages = {"com.review.bean"})
 
-//EnableAutoConfiguration
 
 public class Application {
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.review.bean.Usuario;
 
-/*
+/**
  * Interfaz para almacenar y recuperar los datos de usuarios
  */
 
