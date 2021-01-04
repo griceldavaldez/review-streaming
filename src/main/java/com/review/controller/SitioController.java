@@ -38,10 +38,10 @@ public class SitioController {
     public SitioReview add(@RequestBody SitioReview sitioReview) throws ReviewException {
 		try {
 			return sitioService.crearSitio(sitioReview);
-		} catch (ReviewException e1) {
-			throw e1;
-		} catch (Exception e) {
-			System.out.println(e);
+		} catch (ReviewException reviewException) {
+			throw reviewException;
+		} catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al agregar sitio Review.");
 		}
 	}
@@ -53,10 +53,10 @@ public class SitioController {
     public void delete(@RequestParam(name = "id_sitio_review",  required = true) Long idSitioReview) throws ReviewException {
 		try {
 			sitioService.eliminarSitio(idSitioReview);
-		}catch (ReviewException e1) {
-			throw e1;
-		} catch (Exception e) {
-			System.out.println(e);
+		}catch (ReviewException reviewException) {
+			throw reviewException;
+		} catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al eliminar sitio Review.");
 		}
 	}
@@ -68,10 +68,10 @@ public class SitioController {
     public SitioReview modify(@RequestBody SitioReview sitioReview) throws ReviewException {
 		try {
 			return sitioService.editarSitio(sitioReview);
-		}catch (ReviewException e1) {
-			throw e1;
-		} catch (Exception e) {
-			System.out.println(e);
+		}catch (ReviewException reviewException) {
+			throw reviewException;
+		} catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al modificar sitio Review.");
 		}
 	}

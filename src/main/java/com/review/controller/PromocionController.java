@@ -21,7 +21,7 @@ public class PromocionController {
 	private PromocionService promocionService;
 	
 	/**
-	 * Metodo que lista todas las promociones.
+	 * Metodo que lista todas las promociones segun filtros indicados.
 	 * @return Lista de promociones.
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -31,10 +31,10 @@ public class PromocionController {
     		@RequestParam(name = "descripcion_promocion",  required = false) String descripcionPromocion) throws ReviewException{
         try {
 			return promocionService.obtenerPromociones(idPromocion,tipoPromocion, descripcionPromocion);
-        } catch (ReviewException e1) {
-			throw e1;
-        } catch (Exception e) {
-			System.out.println(e);
+        } catch (ReviewException reviewException) {
+			throw reviewException;
+        } catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrio un error inesperado al listar promociones.");
 		}
     }
@@ -47,10 +47,10 @@ public class PromocionController {
     public Promocion add(@RequestBody Promocion promocion) throws ReviewException {
 			try {
 				return promocionService.crearPromocion(promocion);
-	        } catch (ReviewException e1) {
-				throw e1;
-			} catch (Exception e) {
-				System.out.println(e);
+	        } catch (ReviewException reviewException) {
+				throw reviewException;
+			} catch (Exception error) {
+				System.out.println(error);
 				throw new ReviewException("Ocurrio un error inesperado al agregar promocion.");
 			}
 	}
@@ -63,10 +63,10 @@ public class PromocionController {
     public void delete(@RequestParam(name = "id_promocion",  required = true) Long idPromocion) throws ReviewException {
 			try {
 				promocionService.eliminarPromocion(idPromocion);
-	        } catch (ReviewException e1) {
-				throw e1;
-			} catch (Exception e) {
-				System.out.println(e);
+	        } catch (ReviewException reviewException) {
+				throw reviewException;
+			} catch (Exception error) {
+				System.out.println(error);
 				throw new ReviewException("Ocurrio un error inesperado al eliminar promocion.");
 			}
 	}
@@ -79,10 +79,10 @@ public class PromocionController {
     public Promocion modify(@RequestBody Promocion promocion) throws ReviewException {
 			try {
 				return promocionService.editarPromocion(promocion);
-	        } catch (ReviewException e1) {
-				throw e1;
-			} catch (Exception e) {
-				System.out.println(e);
+	        } catch (ReviewException reviewException) {
+				throw reviewException;
+			} catch (Exception error) {
+				System.out.println(error);
 				throw new ReviewException("Ocurrio un error inesperado al modificar la promocion.");
 			}
 	}

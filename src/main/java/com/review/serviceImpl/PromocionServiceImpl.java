@@ -24,11 +24,15 @@ public class PromocionServiceImpl implements PromocionService{
 	@Autowired
 	private PromocionRepository promocionRepository; 
 	
+	/* Método para crear una promoción.*/
+	
 	@Override
 	public Promocion crearPromocion(Promocion promocion) throws ReviewException{
 		ValidarUtils.validarCreacionPromocion(promocion);
 		return promocionRepository.save(promocion);
 	}
+	
+	/* Metodo para editar una promocion*/
 	
 	@Override
 	public Promocion editarPromocion(Promocion promocion) throws ReviewException{
@@ -47,6 +51,9 @@ public class PromocionServiceImpl implements PromocionService{
 		}
 	}
 	
+	/*Metodo para obtener una lista de promociones por ciertos filtros*/
+	
+	@Override
 	public List<Promocion> obtenerPromociones(Long idPromocion, String tipoPromocion, String descripcionPromocion) throws ReviewException{
 		Promocion filtroPromocion=new Promocion();
 		filtroPromocion.setIdPromocion(idPromocion);
@@ -55,6 +62,9 @@ public class PromocionServiceImpl implements PromocionService{
 		return ListarUtils.listar(filtroPromocion, promocionRepository);
 	}
 	
+	/*Metodo para eliminar una promocion.*/
+	
+	@Override
 	public void eliminarPromocion(Long idPromocion) throws ReviewException{
 		if(idPromocion != null && promocionRepository.existsById(idPromocion)) {
 			promocionRepository.deleteById(idPromocion);

@@ -22,7 +22,9 @@ public class CategoriaServiceImpl implements CategoriaService {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-
+	
+	/*Metodo que crea una nueva categoria*/
+	
 	@Override
 	public Categoria crearCategoria(Categoria categoria) throws ReviewException{
 		//controlamos que no reciba una instancia vacia para poder guardar en la BD
@@ -33,7 +35,9 @@ public class CategoriaServiceImpl implements CategoriaService {
 			throw new ReviewException("No se puede crear una categoria sin indicar su descripcion");
 		}
 	}
-
+	
+	/*Metodo que edita una categoria existente en la base de datos*/
+	
 	@Override
 	public Categoria editarCategoria(Categoria categoria) throws ReviewException {
 		if(categoria.getIdCategoria() != null && categoriaRepository.existsById(categoria.getIdCategoria())) {
@@ -47,7 +51,9 @@ public class CategoriaServiceImpl implements CategoriaService {
 			throw new ReviewException("No se puede editar la categoria porque no existe en la base de datos.");
 		}
 	}
-
+	
+	/*Metodo que lista las categorias*/
+	
 	@Override
 	public List<Categoria> obtenerCategorias(Long idCategoria, String descripcionCategoria) throws ReviewException {
 		Boolean hayIdCategoria = idCategoria != null && idCategoria.compareTo((long) 0) != 0;
@@ -62,7 +68,9 @@ public class CategoriaServiceImpl implements CategoriaService {
 		}
 		return ListarUtils.listar(filtroCategoria, categoriaRepository);
 	}
-
+	
+	/*Metodo que elimina una categoria*/
+	
 	@Override
 	public void eliminarCategoria(Long idCategoria) throws ReviewException{
 		if(idCategoria != null && categoriaRepository.existsById(idCategoria)) {

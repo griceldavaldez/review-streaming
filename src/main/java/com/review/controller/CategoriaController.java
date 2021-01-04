@@ -30,10 +30,10 @@ public class CategoriaController {
     		@RequestParam(name = "descripcion_categoria",  required = false) String descripcionCategoria) throws ReviewException{
         try {
 			return categoriaService.obtenerCategorias(idCategoria,descripcionCategoria);
-        } catch (ReviewException e1) {
-			throw e1;
-		} catch (Exception e) {
-			System.out.println(e);
+        } catch (ReviewException reviewException) {
+			throw reviewException;
+		} catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al listar Categorias.");
 		}
     }
@@ -46,10 +46,10 @@ public class CategoriaController {
     public Categoria add(@RequestBody Categoria categoria) throws ReviewException {
 			try {
 				return categoriaService.crearCategoria(categoria);
-			} catch (ReviewException e1) {
-				throw e1;
-			} catch (Exception e) {
-				System.out.println(e);
+			} catch (ReviewException reviewException) {
+				throw reviewException;
+			} catch (Exception error) {
+				System.out.println(error);
 				throw new ReviewException("Ocurrió un error inesperado al agregar categoria.");
 			}
 	}
@@ -62,10 +62,10 @@ public class CategoriaController {
     public void delete(@RequestParam (name = "id_categoria",  required = true) Long idCategoria) throws ReviewException {
 			try {
 				categoriaService.eliminarCategoria(idCategoria);
-			} catch (ReviewException e1) {
-				throw e1;
-			} catch (Exception e) {
-				System.out.println(e);
+			} catch (ReviewException reviewException) {
+				throw reviewException;
+			} catch (Exception error) {
+				System.out.println(error);
 				throw new ReviewException("Ocurrió un error inesperado al eliminar categoria.");
 			}
 	}
@@ -78,10 +78,10 @@ public class CategoriaController {
     public Categoria modify(@RequestBody Categoria categoria) throws ReviewException {
 			try {
 				return categoriaService.editarCategoria(categoria);
-			} catch (ReviewException e1) {
-				throw e1;
-			} catch (Exception e) {
-				System.out.println(e);
+			} catch (ReviewException reviewException) {
+				throw reviewException;
+			} catch (Exception error) {
+				System.out.println(error);
 				throw new ReviewException("Ocurrió un error inesperado al modificar categoria.");
 			}
 	}

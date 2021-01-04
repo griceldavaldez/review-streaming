@@ -10,24 +10,27 @@ public interface PromocionService {
 	 * Método para crear una promoción. Facilitar los atributos de la promoción a crear, excepto el idPromocion (que se crea automaticamente).
 	 * 
 	 * @param Promocion La promocion, indicando los atributos con los cuales crear.
-	 * @return Un numero distinto de cero si la creacion de Promocion se hizo correctamente
+	 * @return Promocion creada
+	 * @throws ReviewException
 	 */
-	public Promocion crearPromocion(Promocion Promocion) throws ReviewException;
+	public Promocion crearPromocion(Promocion promocion) throws ReviewException;
 	
 	/**
 	 * Metodo para editar una promocion. Facilitar el atributo idPromocion para ubicar la promocion a editar, y luego los nuevos valores de los atributos a actualizar.
 	 * 
 	 * @param Promocion La promocion, indicando los atributos a modificar.
-	 * @return Un numero distinto de cero si la modificacion de Promocion se hizo correctamente
+	 * @throws ReviewException
 	 */
-	public Promocion editarPromocion(Promocion Promocion) throws ReviewException;
+	public Promocion editarPromocion(Promocion promocion) throws ReviewException;
 	
 	/**
 	 * Metodo para obtener una lista de promociones por ciertos filtros. Si no se indican filtros, se obtienen todas las promociones.
 	 * 
 	 * @param idPromocion Filtro para indicar que se desean obtener las promociones con este id. Puede ser null.
 	 * @param tipoPromocion Filtro para indicar que se desean obtener las promociones de este tipo. Puede ser null.
-	 * @return Lista de promociones que cumplan con los filtros indicados.
+	 * @param descripcionPromocion Filtro para indicar descripcion de las promociones. Puede ser null
+	 * @return Lista de promociones con los filtros indicados.
+	 * @throws ReviewException
 	 */
 	public List<Promocion> obtenerPromociones(Long idPromocion, String tipoPromocion, String descripcionPromocion) throws ReviewException;
 	
@@ -35,7 +38,7 @@ public interface PromocionService {
 	 * Metodo para eliminar una promocion. Facilitar el atributo idPromocion para ubicar la promocion a eliminar.
 	 * 
 	 * @param idPromocion Numero identificador de la promocion.
-	 * @return nada
+	 * @throws ReviewException
 	 */
 	public void eliminarPromocion(Long idPromocion) throws ReviewException;
 }

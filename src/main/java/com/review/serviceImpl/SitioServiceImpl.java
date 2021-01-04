@@ -25,12 +25,16 @@ public class SitioServiceImpl implements SitioService {
 	@Autowired
 	private SitioReviewRepository sitioRepository;
 
+	/*Metodo para crear un sitio de review*/
+	
 	@Override
 	public SitioReview crearSitio(SitioReview sitio) throws ReviewException {
 		ValidarUtils.validarCreacionSitio(sitio);
 		return sitioRepository.save(sitio);
 	}
 
+	/*Metodo para editar un sitio de review.*/
+	
 	@Override
 	public SitioReview editarSitio(SitioReview sitio) throws ReviewException{
 		if(sitio.getIdSitioReview() != null && sitioRepository.existsById(sitio.getIdSitioReview())){
@@ -48,7 +52,9 @@ public class SitioServiceImpl implements SitioService {
 			throw new ReviewException("No se puede editar sitio porque no existe en la base de datos");
 		}
 	}
-
+	
+	/*Metodo para obtener una lista de sitios de review por ciertos filtros*/
+	
 	@Override
 	public List<SitioReview> obtenerSitios(Long idSitioReview, String nombre) {
 		Boolean hayIdSitio = idSitioReview != null;
@@ -63,6 +69,8 @@ public class SitioServiceImpl implements SitioService {
 		}
 		return ListarUtils.listar(s, sitioRepository);
 	}
+	
+	/*Metodo para eliminar un sitio de review.*/
 
 	@Override
 	public void eliminarSitio(Long idSitio) throws ReviewException{
