@@ -40,55 +40,80 @@ public class UsuarioController {
     		@RequestParam(name = "estado", required = false) EstadoEnum estado) throws ReviewException{
         try {
 			return usuarioService.obtenerUsuario(idUsuario,nombre, rol, email, estado );
-        } catch (Exception e) {
+        } catch (Exception error) {
+        	System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al listar usuarios.");
 		}
     }
 	
+	
 	/**
-	 * Método que agrega un nuevo usuario
+	 * Método que agrega un nuevo usuario administrador
 	 * @throws ReviewException 
 	 */
+	
 	@RequestMapping(value = "/add-administrador", method = RequestMethod.POST)
     public Administrador addAdministrador(@RequestBody Administrador administrador) throws ReviewException {
 			try {
 				return usuarioService.crearAdministrador(administrador);
-			} catch (ReviewException e1) {
-				throw e1;
-			} catch (Exception e) {
+			} catch (ReviewException reviewException) {
+				throw reviewException;
+			} catch (Exception error) {
+				System.out.println(error);
 				throw new ReviewException("Ocurrió un error inesperado al agregar administrador.");
 			}
 	}
+	
+	
+	/**
+	 * Método que agrega un nuevo usuario espectador
+	 * @throws ReviewException 
+	 */
 	
 	@RequestMapping(value = "/add-espectador", method = RequestMethod.POST)
     public Espectador addEspectador(@RequestBody Espectador espectador) throws ReviewException {
 			try {
 				return usuarioService.crearEspectador(espectador);
-			} catch (ReviewException e1) {
-				throw e1;
-			} catch (Exception e) {
+			} catch (ReviewException reviewException) {
+				throw reviewException;
+			} catch (Exception error) {
+				System.out.println(error);
 				throw new ReviewException("Ocurrió un error inesperado al agregar espectador.");
 			}
 	}
+	
+	
+	/**
+	 * Método que agrega un nuevo usuario curador de contenido
+	 * @throws ReviewException 
+	 */
 	
 	@RequestMapping(value = "/add-curador", method = RequestMethod.POST)
     public CuradorDeContenido addCurador(@RequestBody CuradorDeContenido curador) throws ReviewException {
 			try {
 				return  usuarioService.crearCurador(curador);
-			} catch (ReviewException e1) {
-				throw e1;
-			} catch (Exception e) {
+			} catch (ReviewException reviewException) {
+				throw reviewException;
+			} catch (Exception error) {
+				System.out.println(error);
 				throw new ReviewException("Ocurrió un error inesperado al agregar curador.");
 			}
 	}
+	
+	
+	/**
+	 * Método que convierte a un usuario espectador a premium.
+	 * @throws ReviewException 
+	 */
 	
 	@RequestMapping(value = "/convertir-premium", method = RequestMethod.POST)
     public Usuario convertirEspectadorAPremium(@RequestParam(name = "id_usuario",  required = true) Long idUsuario) throws ReviewException {
 			try {
 				return usuarioService.convertirPremium(idUsuario);
-			} catch (ReviewException e1) {
-				throw e1;
-			} catch (Exception e) {
+			} catch (ReviewException reviewException) {
+				throw reviewException;
+			} catch (Exception error) {
+				System.out.println(error);
 				throw new ReviewException("Ocurrió un error inesperado al convertir a premium.");
 			}
 	}
@@ -96,85 +121,107 @@ public class UsuarioController {
 	
 	/**
 	 * Método que elimina un usuario
+	 * @throws ReviewException 
 	 */
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public void delete(@RequestParam(name = "id_usuario",  required = true) Long idUsuario) throws ReviewException  {
 		try {
 			usuarioService.eliminarUsuario(idUsuario);
-		}catch (ReviewException e1) {
-			throw e1;
-		}catch (Exception e) {
+		}catch (ReviewException reviewException) {
+			throw reviewException;
+		}catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al eliminar usuario.");
 		}
 	}
 	
 
 	/**
-	 * Método que edita un usuario
+	 * Método que edita un usuario administrador
+	 * @throws ReviewException
 	 */
+	
 	@RequestMapping(value = "/modify-administrador", method = RequestMethod.POST)
     public Administrador modifyAdministrador(@RequestBody Administrador administrador) throws ReviewException{
 		try {
 			return  usuarioService.editarAdministrador(administrador);
-		}catch (ReviewException e1) {
-			throw e1;
-		}catch (Exception e) {
-			throw e;
+		}catch (ReviewException reviewException) {
+			throw reviewException;
+		}catch (Exception error) {
+			System.out.println(error);
+			throw new ReviewException("Ocurrió un error inesperado al modificar usuario administrador");
 		}
 	}
+	
+	
+	/**
+	 * Método que edita un usuario espectador
+	 * @throws ReviewException
+	 */
 	
 	@RequestMapping(value = "/modify-espectador", method = RequestMethod.POST)
     public Espectador modifyEspectador(@RequestBody Espectador espectador) throws ReviewException{
 		try {
 			return  usuarioService.editarEspectador(espectador);
-		}catch (ReviewException e1) {
-			throw e1;
-		}catch (Exception e) {
-			throw e;
+		}catch (ReviewException reviewException) {
+			throw reviewException;
+		}catch (Exception error) {
+			System.out.println(error);
+			throw new ReviewException("Ocurrió un error inesperado al modificar usuario espectador");
 		}
 	}
+	
+	
+	/**
+	 * Método que edita un usuario curador de contenido
+	 * @throws ReviewException
+	 */
 	
 	@RequestMapping(value = "/modify-curador", method = RequestMethod.POST)
     public CuradorDeContenido modifyCurador(@RequestBody CuradorDeContenido curador) throws ReviewException{
 		try {
 			return  usuarioService.editarCurador(curador);
-		}catch (ReviewException e1) {
-			throw e1;
-		}catch (Exception e) {
-			throw e;
+		}catch (ReviewException reviewException) {
+			throw reviewException;
+		}catch (Exception error) {
+			System.out.println(error);
+			throw new ReviewException("Ocurrió un error inesperado al modificar usuario curador.");
 		}
 	}
 	
 	
 	/**
-	 * Notificar vencimiento a usuarios
+	 * Método que notifica vencimiento a usuarios
 	 * @throws ReviewException 
 	 */
+	
 	@RequestMapping(value = "/notificar-vencimiento-usuarios", method = RequestMethod.GET)
     public void notificarVencimientoUsuarios() throws ReviewException {
 			try {
 				usuarioService.notificarVencimiento();
-			} catch (ReviewException e1) {
-				throw e1;
-			} catch (Exception e) {
-				System.out.println(e);
+			} catch (ReviewException reviewException) {
+				throw reviewException;
+			} catch (Exception error) {
+				System.out.println(error);
 				throw new ReviewException("Ocurrió un error inesperado al notificar vencimiento a usuarios.");
 			}
 	}
 	
+	
 	/**
 	 * Metodo que permite renovar credencial de un usuario
-	 * 
-	 * @param idUsuario El identificador del usuario
 	 * @throws ReviewException
 	 */
+	
 	@RequestMapping(value = "/renovar-credencial", method = RequestMethod.POST)
 	public Usuario renovarCredencial(@RequestParam(name = "id_usuario",  required = true) Long idUsuario) throws ReviewException{
 		try {
 			return usuarioService.renovarCredencial(idUsuario);
-		} catch (ReviewException e1) {
-			throw e1;
-		} catch (Exception e) {
+		} catch (ReviewException reviewException) {
+			throw reviewException;
+		} catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al renovar credencial del usuario.");
 		}
 	}

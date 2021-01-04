@@ -33,7 +33,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-
+	/*Metodo para verificar y actualizar atributos de un usuario existente en la base de datos*/
+	
 	private void actualizarAtributosComunes(Usuario usuario, Usuario usuarioExistente) {
 		if(! ValidarUtils.isEmptyString(usuario.getNombre())) {
 			usuarioExistente.setNombre(usuario.getNombre());
@@ -46,17 +47,21 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}	
 	}
 	
+
+	/*Metodo para obtener una lista de usuarios por ciertos filtros*/
+	
 	@Override
 	public List<Usuario> obtenerUsuario(Long idUsuario, String nombre, TipoUsuarioEnum tipoUsuario, String email, EstadoEnum estado) {
-		Usuario usuarioNuevo = new Usuario();
-		usuarioNuevo.setIdUsuario(idUsuario);
-		usuarioNuevo.setNombre(nombre);
-		usuarioNuevo.setTipoUsuario(tipoUsuario);
-		usuarioNuevo.setEmail(email);
-		usuarioNuevo.setEstado(estado);
-		return ListarUtils.listar(usuarioNuevo, usuarioRepository);
+		Usuario usuario = new Usuario();
+		usuario.setIdUsuario(idUsuario);
+		usuario.setNombre(nombre);
+		usuario.setTipoUsuario(tipoUsuario);
+		usuario.setEmail(email);
+		usuario.setEstado(estado);
+		return ListarUtils.listar(usuario, usuarioRepository);
 	}
 	
+	/* Metodo para eliminar un usuario*/
 	
 	@Override
 	public void eliminarUsuario(Long idUsuario) throws ReviewException{
@@ -67,6 +72,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 			}
 	}
 
+	/*Metodo que envia un mensaje por correo o push notification al usuario cuyo credencial esta por expirar.*/
+	
 	@Override
 	public void notificarVencimiento() throws ReviewException {
 		try {
@@ -74,12 +81,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 			List<Usuario> usuarios = usuarioRepository.findExpiredUsersCredential();
 			
 			if(usuarios != null && !usuarios.isEmpty()) {
-				for(Usuario u : usuarios) {
+				for(Usuario usuarioANotificar : usuarios) {
 					try {
-						u.setEstado(EstadoEnum.INACTIVO);
-						EmailUtils.notificarVencimientoEmail(u);
+						usuarioANotificar.setEstado(EstadoEnum.INACTIVO);
+						EmailUtils.notificarVencimientoEmail(usuarioANotificar);
 					} catch (Exception e) {
-						System.out.println("No se pudo notificar vencimiento al usuario ID: " + u.getIdUsuario());
+						System.out.println("No se pudo notificar vencimiento al usuario ID: " + usuarioANotificar.getIdUsuario());
 					}
 				}
 			}
@@ -87,15 +94,17 @@ public class UsuarioServiceImpl implements UsuarioService {
 			throw new ReviewException("Hubo un problema al notificar vencimiento a los usuarios.");
 		}
 	}
-
+	
+	/*Metodo que renueva la credencial de un usuario*/
+	
 	@Override
 	public Usuario renovarCredencial(Long idUsuario) throws ReviewException {
 		if(idUsuario != null && usuarioRepository.existsById(idUsuario)) {
-			Optional<Usuario> val = usuarioRepository.findById(idUsuario);
-			Usuario usuario = val.get();
-			usuario.setFechaVencimiento(DateUtils.sumarDiasDate(new Date(), Constantes.DIAS_VENCIMIENTO));
-			usuario.setEstado(EstadoEnum.ACTIVO);
-			return usuarioRepository.save(usuario);
+			Optional<Usuario> recuperarUsuario = usuarioRepository.findById(idUsuario);
+			Usuario usuarioExistente = recuperarUsuario.get();
+			usuarioExistente.setFechaVencimiento(DateUtils.sumarDiasDate(new Date(), Constantes.DIAS_VENCIMIENTO));
+			usuarioExistente.setEstado(EstadoEnum.ACTIVO);
+			return usuarioRepository.save(usuarioExistente);
 		}else {
 			throw new ReviewException("No se puede renovar credencial porque el usuario no existe.");
 		}
@@ -118,6 +127,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 	}
 
+	/* Metodo para editar un usuario administrador*/
 	
 	@Override
 	public Administrador editarAdministrador(Administrador administrador) throws ReviewException {
@@ -131,6 +141,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 	}
 
+	/* Metodo para editar un usuario curador de contenido*/
 	
 	@Override
 	public CuradorDeContenido editarCurador(CuradorDeContenido curador) throws ReviewException {
@@ -147,6 +158,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 	}
 
+	/* Metodo para editar un usuario espectador*/
 	
 	@Override
 	public Espectador editarEspectador(Espectador espectador) throws ReviewException {
@@ -165,6 +177,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 	}
 
+	/* Metodo para crear un usuario administrador*/
+	
 	@Override
 	public Administrador crearAdministrador(Administrador administrador) throws ReviewException {
 		ValidarUtils.validarCreacionUsuario(administrador);
@@ -173,7 +187,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 		administrador.setFechaVencimiento(DateUtils.sumarDiasDate(administrador.getFechaRegistro(), Constantes.DIAS_VENCIMIENTO));
 		return usuarioRepository.save(administrador);
 	}
-
+	
+	/* Metodo para crear un usuario espectador*/
+	
 	@Override
 	public Espectador crearEspectador(Espectador espectador) throws ReviewException {
 		ValidarUtils.validarCreacionUsuario(espectador);
@@ -189,7 +205,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 		return usuarioRepository.save(espectador);
 	}
-
+	
+	/* Metodo para crear un usuario curador de contenido*/
+	
 	@Override
 	public CuradorDeContenido crearCurador(CuradorDeContenido curador) throws ReviewException {
 		ValidarUtils.validarCreacionUsuario(curador);
