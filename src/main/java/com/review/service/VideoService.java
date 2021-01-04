@@ -12,21 +12,21 @@ public interface VideoService {
 	/**
 	 * Método para crear un video. Recibirá instancia de Serie o de Pelicula. Facilitar los atributos del video a crear, excepto el idVideo (que se crea automáticamente).
 	 * 
-	 * @param video
 	 * @return El video recientemente creado
+	 *  @throws ReviewException
 	 */
+	
 	public Video crearVideo(Video video) throws ReviewException;
+	
 	
 	/**
 	 * Metodo para obtener una lista de videos por ciertos filtros. Si no se indican filtros, se obtienen todos los videos.
 	 * 
 	 * @param idVideo Filtro para indicar que se desean obtener los videos con este id. Puede ser null.
 	 * @param titulo Filtro para indicar que se desean obtener los videos con este titulo (o que contenga). Puede ser null.
-	 * @param idSitioReview Filtro para indicar que se desean obtener los videos de este sitio. Puede ser null.
-	 * @param idCategoria Filtro para indicar que se desean obtener los videos con esta categoria. Puede ser null.
+	 * @param tipoVideo Filtro para indicar tipo de video "SERIE" o "PELICULA". Puede ser null
 	 * @return Lista de videos que se obtuvieron con los filtros indicados.
 	 */
-	//public List<Video> obtenerVideos(Long idVideo, String titulo, Integer idSitioReview, Integer idCategoria);
 	
 	public List<Video> obtenerVideos(Long idVideo, String titulo, TipoVideoEnum tipoVideo);
 	
@@ -34,24 +34,27 @@ public interface VideoService {
 	/**
 	 * Metodo para eliminar un video. Facilitar el atributo idVideo para ubicar el video a eliminar.
 	 * 
-	 * @param idVideo N�mero identificador del video.
-	 * @return Un numero distinto de cero si la eliminacion de Video se hizo correctamente
+	 * @param idVideo Numero identificador del video.
+	 * @throws ReviewException
 	 */
 	
 	public void eliminarVideo(Long idVideo) throws ReviewException;
 
-	/** Metodo para editar una pelicula.
+	
+	/** Metodo para editar una pelicula existente en la base de datos.
+	 * 
 	 * @param video Datos a utilizar para editar. Debe incluirse el idVideo.
-	 * @return La nueva pelicula creada.
 	 * @throws ReviewException
 	 */
-	public Pelicula editarPelicula(Pelicula video) throws ReviewException;
+	
+	public Pelicula editarPelicula(Pelicula pelicula) throws ReviewException;
 
-	/** Metodo para editar una serie.
+	
+	/** Metodo para editar una serie existente en la base de datos.
+	 * 
 	 * @param video Datos a utilizar para editar. Debe incluirse el idVideo.
-	 * @return La nueva serie creada.
 	 * @throws ReviewException
 	 */
-	public Serie editarSerie(Serie video) throws ReviewException;
+	public Serie editarSerie(Serie serie) throws ReviewException;
 	
 }

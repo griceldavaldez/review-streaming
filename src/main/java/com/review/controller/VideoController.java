@@ -24,7 +24,7 @@ public class VideoController {
 	private VideoService videoService;
 	
 	/**
-	 * Metodo que lista todos los videos de la base de datos
+	 * Metodo que lista todos los videos de la base de datos segun los filtros indicados
 	 * @return Lista de videos 
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -35,72 +35,88 @@ public class VideoController {
     }
 	
 	/**
-	 * Metodo que agrega un nuevo video a la base de datos
+	 * Metodo que agrega una nueva pelicula a la base de datos
+	 * 
+	 * @throws ReviewException
 	 */
 	@RequestMapping(value = "/add-pelicula", method = RequestMethod.POST)
-    public Video addPelicula(@RequestBody Pelicula video) throws ReviewException{
+    public Video addPelicula(@RequestBody Pelicula pelicula) throws ReviewException{
 		try {
-			return videoService.crearVideo(video);
-		}catch (ReviewException e1) {
-			throw e1;
-		} catch (Exception e) {
-			System.out.println(e);
+			return videoService.crearVideo(pelicula);
+		}catch (ReviewException reviewException) {
+			throw reviewException;
+		} catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al agregar pelicula.");
 		}
 	}
 	
 	/**
-	 * Método que agrega un video tipo serie.
+	 * Metodo que agrega una nueva serie a la base de datos
+	 * 
+	 * @throws ReviewException
 	 */
 	@RequestMapping(value = "/add-serie", method = RequestMethod.POST)
     public Video addSerie(@RequestBody Serie serie) throws ReviewException{
 		try {
 			return videoService.crearVideo(serie);
-		}catch (ReviewException e1) {
-			throw e1;
-		} catch (Exception e) {
-			System.out.println(e);
+		}catch (ReviewException reviewException) {
+			throw reviewException;
+		} catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al agregar serie.");
 		}	
 	}
 	
+	/**
+	 * Metodo que modifica una serie existente en la base de datos
+	 * 
+	 * @throws ReviewException
+	 */
 	@RequestMapping(value = "/modify-serie", method = RequestMethod.POST)
-    public Serie modifySerie(@RequestBody Serie video) throws ReviewException{
+    public Serie modifySerie(@RequestBody Serie serie) throws ReviewException{
 		try {
-			return videoService.editarSerie(video);
-		}catch (ReviewException e1) {
-			throw e1;
-		} catch (Exception e) {
-			System.out.println(e);
+			return videoService.editarSerie(serie);
+		}catch (ReviewException reviewException) {
+			throw reviewException;
+		} catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al editar serie.");
 		}
 	}
 	
+	/**
+	 * Metodo que modifica una pelicula existente en la base de datos
+	 * 
+	 * @throws ReviewException
+	 */
+	
 	@RequestMapping(value = "/modify-pelicula", method = RequestMethod.POST)
-    public Pelicula modifyPelicula(@RequestBody Pelicula video) throws ReviewException{
+    public Pelicula modifyPelicula(@RequestBody Pelicula pelicula) throws ReviewException{
 		try {
-			return videoService.editarPelicula(video);
-		}catch (ReviewException e1) {
-			throw e1;
-		} catch (Exception e) {
-			System.out.println(e);
+			return videoService.editarPelicula(pelicula);
+		}catch (ReviewException reviewException) {
+			throw reviewException;
+		} catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al editar pelicula.");
 		}
 	}
 	
-	
+	/**
+	 * Metodo que elimina un video de la base de datos
+	 * 
+	 * @throws ReviewException
+	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public void delete(@RequestParam(name = "id_video",  required = true) Long idVideo) throws ReviewException{
 		try {
 			videoService.eliminarVideo(idVideo);
-		}catch (ReviewException e1) {
-			throw e1;
-		} catch (Exception e) {
-			System.out.println(e);
+		}catch (ReviewException reviewException) {
+			throw reviewException;
+		} catch (Exception error) {
+			System.out.println(error);
 			throw new ReviewException("Ocurrió un error inesperado al eliminar video.");
 		}
-	}
-	
-	
-	
+	}	
 }
